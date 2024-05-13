@@ -1,0 +1,2143 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Incremental Data Processing with Hudi :: Getting Hands On with Amazon GuardDuty</title>
+
+    
+    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
+    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
+    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
+    <link href="/css/theme.css?1715586281" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/4-transformingdatawithglue/4.2-hudi/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1715586281"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-introduce/" title="Giới thiệu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-introduce/">
+           <b> 1. </b> Giới thiệu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/" title="Lab. Phát hiện luồng click chuột bất thường bằng Amazon Managed Service for Apache Flink" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/">
+           <b> 2 </b> Lab. Phát hiện luồng click chuột bất thường bằng Amazon Managed Service for Apache Flink
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.1-prepare/" title="Phát hiện luồng click chuột bất thường bằng Amazon Managed Service for Apache Flink" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.1-prepare/">
+           <b> 2.1 </b> Phát hiện luồng click chuột bất thường bằng Amazon Managed Service for Apache Flink
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.2-lab/" title="Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.2-lab/">
+           <b> 2.2 </b> Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.3-labetl/" title="Lab. Streaming ETL with Glue " class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.3-labetl/">
+           <b> 2.3 </b> Lab. Streaming ETL with Glue 
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.4-kinesis/" title="Real-time Streaming with Kinesis" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.4-kinesis/">
+           <b> 2.4 </b> Real-time Streaming with Kinesis
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.5-msk/" title="Clickstream Analytics using MSK" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.5-msk/">
+           <b> 2.5 </b> Clickstream Analytics using MSK
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-ingestionwithdms/" title="Nhập data với DMS" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-ingestionwithdms/">
+           <b> 3. </b> Nhập data với DMS
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-ingestionwithdms/3.1-dms-migration-lab/" title=" Option1: DMS Migration Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-ingestionwithdms/3.1-dms-migration-lab/">
+           <b> 3.1. </b>  Option1: DMS Migration Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-ingestionwithdms/3.3-skip-dms-lab/" title="Option 2: AutoComplete DMS Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-ingestionwithdms/3.3-skip-dms-lab/">
+           <b> 3.2. </b> Option 2: AutoComplete DMS Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-ingestionwithdms/3.2-private-instance/" title="Option 3: Skip DMS Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-ingestionwithdms/3.2-private-instance/">
+           <b> 3.2. </b> Option 3: Skip DMS Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-transformingdatawithglue/" title="Lab: Transforming data with Glue" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/4-transformingdatawithglue/">
+           <b> 4. </b> Lab: Transforming data with Glue
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-transformingdatawithglue/4.1-datavalidationandetl/" title="Data Validation and ETL" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-transformingdatawithglue/4.1-datavalidationandetl/">
+           <b> 4.1 </b> Data Validation and ETL
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-transformingdatawithglue/4.2-hudi/" title="Incremental Data Processing with Hudi" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/4-transformingdatawithglue/4.2-hudi/">
+           <b> 4.2 </b> Incremental Data Processing with Hudi
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-labqueryandvisualize/" title="Lab: Query and Visualize" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-labqueryandvisualize/">
+           <b> 5. </b> Lab: Query and Visualize
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-labqueryandvisualize/5.1-athenaandquicksight/" title="Athena and QuickSight" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-labqueryandvisualize/5.1-athenaandquicksight/">
+           <b> 5.1 </b> Athena and QuickSight
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-labqueryandvisualize/5.2-athenafederatedquery/" title="Athena Federated query" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-labqueryandvisualize/5.2-athenafederatedquery/">
+           <b> 5.2 </b> Athena Federated query
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-labqueryandvisualize/5.3-athenaandsagemaker/" title="Athena and SageMaker" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-labqueryandvisualize/5.3-athenaandsagemaker/">
+           <b> 5.3 </b> Athena and SageMaker
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/" title="Lab: Data Lake Automation" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/">
+          <b>6. </b>Lab: Data Lake Automation
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/6.1-lakeformationlab/" title="Lake Formation Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/6.1-lakeformationlab/">
+           <b> 6.1 </b> Lake Formation Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/6.2-lakeformationlabforapachehuditables/" title="Lake Formation Lab for Apache Hudi Tables" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/6.2-lakeformationlabforapachehuditables/">
+           <b> 6.2 </b> Lake Formation Lab for Apache Hudi Tables
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/6.3-lakeformationlabforapacheicebergtables/" title="Lake Formation Lab for Apache Iceberg Tables" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/6.3-lakeformationlabforapacheicebergtables/">
+           <b> 6.3 </b> Lake Formation Lab for Apache Iceberg Tables
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/6.4-lakeformationlabordeltatables/" title="Lake Formation Lab for Delta Tables" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/6.4-lakeformationlabordeltatables/">
+           <b> 6.4 </b> Lake Formation Lab for Delta Tables
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-bonuslabgluedatabrew/" title="Bonus Lab: Glue DataBrew" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-bonuslabgluedatabrew/">
+          <b>7. </b>Bonus Lab: Glue DataBrew
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-bonuslabgluedatabrew/7.1-databrewpre-lab/" title="DataBrew Pre-Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-bonuslabgluedatabrew/7.1-databrewpre-lab/">
+           <b> 7.1 </b> DataBrew Pre-Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-bonuslabgluedatabrew/7.2-datapreparationwithgluedatabrew/" title="Data preparation with Glue DataBrew" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-bonuslabgluedatabrew/7.2-datapreparationwithgluedatabrew/">
+           <b> 7.2 </b> Data preparation with Glue DataBrew
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/8-clean/" title="Clean up" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/8-clean/">
+          <b>8. </b>Clean up
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="http://awsstudygroup.com"><i class='fab fa-aws'></i> AWS Study Group - Blog</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/660548818043427/"><i class='fab fa-facebook'></i> AWS Study Group - FB Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="/4-transformingdatawithglue/4.2-hudi/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>23-04-2024</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
+            <i> <a href="https://www.linkedin.com/in/nguy%E1%BB%85n-xu%C3%A2n-d%C6%B0%C6%A1ng-132936285/"  style="color:orange">Dương Nguyễn Xuân  </a> <br>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Data Engineering Immersion Day</a> > <a href='/4-transformingdatawithglue/'>Lab: Transforming data with Glue</a> > Incremental Data Processing with Hudi
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#giới-thiệu-apache-hudi">Giới thiệu Apache HUDI</a></li>
+        <li><a href="#step">Step</a></li>
+        <li><a href="#step-0---prerequisites">Step 0 - Prerequisites</a></li>
+        <li><a href="#step-1---tạo-glue-job-và-hudi-tables">Step 1 - Tạo Glue job và HUDI tables</a></li>
+        <li><a href="#step-2--truy-vấn-hudi-table-trong-athena">Step 2 – Truy vấn HUDI table trong Athena</a></li>
+        <li><a href="#step-3--hudi-hudi-configurations">Step 3 – HUDI HUDI configurations</a></li>
+        <li><a href="#step-4--upsert-incremental-changes">Step 4 – Upsert Incremental Changes</a></li>
+        <li><a href="#step-5--chạy-incremental-queries-sử-dụng-spark-sql">Step 5 – Chạy Incremental Queries sử dụng Spark SQL</a></li>
+        <li><a href="#tổng-kết">Tổng kết</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Incremental Data Processing with Hudi
+            </h1>
+          
+
+        
+
+
+
+	<h3 id="giới-thiệu-apache-hudi">Giới thiệu Apache HUDI</h3>
+<p>Apache Hudi là một framework trừu tượng hóa lưu trữ giúp các tổ chức phân tán xây dựng và quản lý các data lakes có quy mô petabyte. Bằng cách sử dụng các phương pháp nguyên thủy như upsert và incremental pulls, Hudi mang đến khả năng xử lý kiểu luồng cho dữ liệu lớn batch-like big data. Hudi cho phép Atomicity, Consistency, Isolation &amp; Durability (ACID) trên data lake.</p>
+<p>Dưới đây là một số tài liệu tham khảo:</p>
+<ol>
+<li><a href="https://hudi.apache.org/docs/concepts/">Apache Hudi concepts</a></li>
+<li><a href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hudi-how-it-works.html">How Hudi Works</a></li>
+</ol>
+<p>Trong bài lab này, chúng ta sẽ học được:</p>
+<ol>
+<li>How to create HUDI tables.</li>
+<li>Process incremental updates.</li>
+<li>Perform upsert operations.</li>
+<li>Run incremental queries in a Glue job.</li>
+</ol>
+<h3 id="step">Step</h3>
+<ul>
+<li>Step 0 - Các yêu cầu</li>
+<li>Step 1 - Tạo glue job và HUDI tables</li>
+<li>Step 2 - Truy vấn HUDI tables bằng Athena</li>
+<li>Step 3 - HUDI configurations</li>
+<li>Step 4 - Upsert CDC data.</li>
+<li>Step 5 - Incremental Queries sử dụng Spark SQL.</li>
+</ul>
+<h3 id="step-0---prerequisites">Step 0 - Prerequisites</h3>
+<ol>
+<li>
+<p>Hoàn thành  <a href="../../3-IngestionwithDMS/3.1-DMS-Migration-Lab/_index.md">Main Lab</a> or <a href="../../3-IngestionwithDMS/3.2-Private-instance/_index.md">Autocomplete DMS Lab</a></p>
+</li>
+<li>
+<p>Source RDS database và trạng thái cdctask là ‘Replication ongoing’
+<img src="/WorkShopTwo/images/4.s3/41.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Tên của S3 bucket trong s3-target-endpoint DMS
+<img src="/WorkShopTwo/images/4.s3/42.png" alt="DeployCF"></p>
+</li>
+</ol>
+<h3 id="step-1---tạo-glue-job-và-hudi-tables">Step 1 - Tạo Glue job và HUDI tables</h3>
+<ol>
+<li>Truy cập <strong>AWS Glue Console</strong> và chọn Jobs</li>
+</ol>
+<p><img src="/WorkShopTwo/images/4.s3/43.png" alt="DeployCF"></p>
+<ol start="2">
+<li>
+<p>Chọn <strong>Spark script editor</strong>, nhấn <strong>Create a new script with boilerplate code</strong> option và click <strong>Create</strong>
+<img src="/WorkShopTwo/images/4.s3/44.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Copy đoạn code sau và past vào Glue script editor</p>
+</li>
+</ol>
+<pre tabindex="0"><code>from pyspark.sql.types import StringType
+import sys
+import os
+import json
+
+from pyspark.context import SparkContext
+from pyspark.sql.session import SparkSession
+from pyspark.sql.functions import concat, col, lit, to_timestamp, dense_rank, desc
+from pyspark.sql.window import Window
+
+from awsglue.utils import getResolvedOptions
+from awsglue.context import GlueContext
+from awsglue.job import Job
+from awsglue.dynamicframe import DynamicFrame
+
+import boto3
+from botocore.exceptions import ClientError
+
+args = getResolvedOptions(sys.argv, [&#39;JOB_NAME&#39;, &#39;RAWZONE_BUCKET&#39;, &#39;CURATED_BUCKET&#39;])
+
+spark = SparkSession.builder.config(&#39;spark.serializer&#39;,&#39;org.apache.spark.serializer.KryoSerializer&#39;).config(&#39;spark.sql.hive.convertMetastoreParquet&#39;, &#39;false&#39;).getOrCreate()
+glueContext = GlueContext(spark.sparkContext)
+job = Job(glueContext)
+job.init(args[&#39;JOB_NAME&#39;], args)
+logger = glueContext.get_logger()
+
+logger.info(&#39;Initialization.&#39;)
+glueClient = boto3.client(&#39;glue&#39;)
+
+logger.info(&#39;Fetching configuration.&#39;)
+region = os.environ[&#39;AWS_DEFAULT_REGION&#39;]
+
+rawBucketName = args[&#39;RAWZONE_BUCKET&#39;]
+curatedBucketName = args[&#39;CURATED_BUCKET&#39;]
+
+if rawBucketName == None or curatedBucketName == None:
+    raise Exception(&#34;Please input the bucket names in job parameters. Refer: https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-crawler-pyspark-extensions-get-resolved-options.html&#34;)
+
+rawS3TablePath = &#39;s3://&#39; + rawBucketName + &#39;/tickets/dms_sample/ticket_purchase_hist/&#39;
+cdcRawS3TablePath = &#39;s3://&#39; + rawBucketName + &#39;/cdc/dms_sample/ticket_purchase_hist/&#39;
+curatedS3TablePathPrefix = &#39;s3://&#39; + curatedBucketName + &#39;/hudi/&#39;
+
+sourceDBName = &#39;dms_sample&#39;
+sourceTableName = &#39;ticket_purchase_hist&#39;
+
+targetDBName = &#39;hudi_sample&#39;
+targetTableName = &#39;ticket_purchase_hist&#39;
+
+hudiStorageType = &#39;CoW&#39;
+
+dropColumnList = [&#39;db&#39;,&#39;table_name&#39;,&#39;Op&#39;]
+      
+logger.info(&#39;Processing starts.&#39;)
+
+keys = {
+    &#34;dms_sample.ticket_purchase_hist&#34;: {&#34;primaryKey&#34;: &#34;sporting_event_ticket_id&#34;}
+    }
+
+spark.sql(&#39;CREATE DATABASE IF NOT EXISTS &#39; + targetDBName)
+
+isTableExists = False
+isPrimaryKey = False
+isPartitionKey = False
+primaryKey = &#39;&#39;
+partitionKey = &#39;&#39;
+try:
+    glueClient.get_table(DatabaseName=targetDBName,Name=targetTableName)
+    isTableExists = True
+    logger.info(targetDBName + &#39;.&#39; + targetTableName + &#39; exists.&#39;)
+except ClientError as e:
+    if e.response[&#39;Error&#39;][&#39;Code&#39;] == &#39;EntityNotFoundException&#39;:
+        isTableExists = False
+        logger.info(targetDBName + &#39;.&#39; + targetTableName + &#39; does not exist. Table will be created.&#39;)
+
+# lookup primary key and partition keys from keys json declared above
+try:
+    keyName = sourceDBName +&#34;.&#34; + sourceTableName
+    logger.info(keyName)
+    table_config = &#39;&#39;
+    
+    for key in keys:
+        if key == keyName:
+            table_config = keys[key]
+    
+    try:
+        primaryKey = table_config[&#39;primaryKey&#39;]
+        isPrimaryKey = True
+        logger.info(&#39;Primary key:&#39; + primaryKey)
+    except KeyError as e:
+        isPrimaryKey = False
+        logger.info(&#39;Primary key not found. An append only glueparquet table will be created.&#39;)
+    try:
+        partitionKey = table_config[&#39;partitionKey&#39;]
+        isPartitionKey = True
+        logger.info(&#39;Partition key:&#39; + partitionKey)
+    except KeyError as e:
+        isPartitionKey = False
+        logger.info(&#39;Partition key not found. Partitions will not be created.&#39;)
+except ClientError as e:    
+    if e.response[&#39;Error&#39;][&#39;Code&#39;] == &#39;ParameterNotFound&#39;:
+        isPrimaryKey = False
+        isPartitionKey = False
+        logger.info(&#39;Config for &#39; + sourceDBName + &#39;.&#39; + sourceTableName + &#39; not found in parameter store. Non partitioned append only table will be created.&#39;)
+
+# Reads the raw zone table and writes to HUDI table
+try:
+    inputDyf = glueContext.create_dynamic_frame_from_options(connection_type = &#39;s3&#39;, connection_options = {&#39;paths&#39;: [rawS3TablePath], &#39;groupFiles&#39;: &#39;none&#39;, &#39;recurse&#39;:True}, format = &#39;csv&#39;, format_options={&#39;withHeader&#39;:True}, transformation_ctx = targetTableName)
+    
+    # Ensure timestamp is in HUDI timestamp format
+    inputDf = inputDyf.toDF().withColumn(&#39;transaction_date_time&#39;, to_timestamp(col(&#39;transaction_date_time&#39;))).withColumn(primaryKey, col(primaryKey).cast(StringType()))
+
+    logger.info(&#39;Total record count in raw table = &#39; + str(inputDyf.count()))
+
+    targetPath = curatedS3TablePathPrefix + &#39;/&#39; + targetDBName + &#39;/&#39; + targetTableName
+
+    morConfig = {
+        &#39;hoodie.datasource.write.table.type&#39;: &#39;MERGE_ON_READ&#39;, 
+        &#39;hoodie.compact.inline&#39;: &#39;false&#39;, 
+        &#39;hoodie.compact.inline.max.delta.commits&#39;: 20, 
+        &#39;hoodie.parquet.small.file.limit&#39;: 0
+    }
+
+    commonConfig = {
+        &#39;className&#39; : &#39;org.apache.hudi&#39;, 
+        &#39;hoodie.datasource.hive_sync.use_jdbc&#39;:&#39;false&#39;, 
+        &#39;hoodie.datasource.write.precombine.field&#39;: &#39;transaction_date_time&#39;, 
+        &#39;hoodie.datasource.write.recordkey.field&#39;: primaryKey, 
+        &#39;hoodie.table.name&#39;: targetTableName, 
+        &#39;hoodie.datasource.hive_sync.database&#39;: targetDBName, 
+        &#39;hoodie.datasource.hive_sync.table&#39;: targetTableName, 
+        &#39;hoodie.datasource.hive_sync.enable&#39;: &#39;true&#39;
+    }
+
+    partitionDataConfig = {
+        &#39;hoodie.datasource.write.partitionpath.field&#39;: partitionKey, 
+        &#39;hoodie.datasource.hive_sync.partition_extractor_class&#39;: &#39;org.apache.hudi.hive.MultiPartKeysValueExtractor&#39;, 
+        &#39;hoodie.datasource.hive_sync.partition_fields&#39;: partitionKey
+    }
+                    
+    unpartitionDataConfig = {
+        &#39;hoodie.datasource.hive_sync.partition_extractor_class&#39;: &#39;org.apache.hudi.hive.NonPartitionedExtractor&#39;, 
+        &#39;hoodie.datasource.write.keygenerator.class&#39;: &#39;org.apache.hudi.keygen.NonpartitionedKeyGenerator&#39;
+    }
+    
+    incrementalConfig = {
+        &#39;hoodie.upsert.shuffle.parallelism&#39;: 20, 
+        &#39;hoodie.datasource.write.operation&#39;: &#39;upsert&#39;, 
+        &#39;hoodie.cleaner.policy&#39;: &#39;KEEP_LATEST_COMMITS&#39;, 
+        &#39;hoodie.cleaner.commits.retained&#39;: 10
+    }
+    
+    initLoadConfig = {
+        &#39;hoodie.bulkinsert.shuffle.parallelism&#39;: 100, 
+        &#39;hoodie.datasource.write.operation&#39;: &#39;bulk_insert&#39;
+    }
+    
+    deleteDataConfig = {
+        &#39;hoodie.datasource.write.payload.class&#39;: &#39;org.apache.hudi.common.model.EmptyHoodieRecordPayload&#39;
+    }
+
+    if(hudiStorageType == &#39;MoR&#39;):
+        commonConfig = {**commonConfig, **morConfig}
+        logger.info(&#39;MoR config appended to commonConfig.&#39;)
+    
+    combinedConf = {}
+
+    # HUDI require us to provide a primaryKey. If no primaryKey defined, we will fallback to &#39;glueparquet&#39; format
+    if(isPrimaryKey):
+        logger.info(&#39;Going the Hudi way.&#39;)
+        if(isTableExists):
+            logger.info(&#39;Incremental load.&#39;)
+            inputDyf = glueContext.create_dynamic_frame_from_options(connection_type = &#39;s3&#39;, connection_options = {&#39;paths&#39;: [cdcRawS3TablePath], &#39;groupFiles&#39;: &#39;none&#39;, &#39;recurse&#39;:True}, format = &#39;csv&#39;, format_options={&#39;withHeader&#39;:True}, transformation_ctx = targetTableName)
+            
+            # Ensure timestamp is in HUDI timestamp format
+            inputDf = inputDyf.toDF().withColumn(&#39;transaction_date_time&#39;, to_timestamp(col(&#39;transaction_date_time&#39;))).withColumn(primaryKey, col(primaryKey).cast(StringType()))
+
+            # ensure only latest updates are kept for each record using descending timestamp order
+            w = Window.partitionBy(primaryKey).orderBy(desc(&#39;transaction_date_time&#39;))
+            inputDf = inputDf.withColumn(&#39;Rank&#39;,dense_rank().over(w))
+            inputDf = inputDf.filter(inputDf.Rank == 1).drop(inputDf.Rank)
+
+            outputDf = inputDf.filter(&#34;Op != &#39;D&#39;&#34;).drop(*dropColumnList)
+
+            if outputDf.count() &gt; 0:
+                logger.info(&#39;Upserting data. Updated row count = &#39; + str(outputDf.count()))
+                if (isPartitionKey):
+                    logger.info(&#39;Writing to partitioned Hudi table.&#39;)
+                    outputDf = outputDf.withColumn(partitionKey,concat(lit(partitionKey+&#39;=&#39;),col(partitionKey)))
+                    combinedConf = {**commonConfig, **partitionDataConfig, **incrementalConfig}
+                    outputDf.write.format(&#39;hudi&#39;).options(**combinedConf).mode(&#39;Append&#39;).save(targetPath)
+                else:
+                    logger.info(&#39;Writing to unpartitioned Hudi table.&#39;)
+                    combinedConf = {**commonConfig, **unpartitionDataConfig, **incrementalConfig}
+                    outputDf.write.format(&#39;hudi&#39;).options(**combinedConf).mode(&#39;Append&#39;).save(targetPath)
+            
+            outputDf_deleted = inputDf.filter(&#34;Op = &#39;D&#39;&#34;).drop(*dropColumnList)
+
+            if outputDf_deleted.count() &gt; 0:
+                logger.info(&#39;Some data got deleted.&#39;)
+                if (isPartitionKey):
+                    logger.info(&#39;Deleting from partitioned Hudi table.&#39;)
+                    outputDf_deleted = outputDf_deleted.withColumn(partitionKey,concat(lit(partitionKey+&#39;=&#39;),col(partitionKey)))
+                    combinedConf = {**commonConfig, **partitionDataConfig, **incrementalConfig, **deleteDataConfig}
+                    outputDf_deleted.write.format(&#39;hudi&#39;).options(**combinedConf).mode(&#39;Append&#39;).save(targetPath)
+                else:
+                    logger.info(&#39;Deleting from unpartitioned Hudi table.&#39;)
+                    combinedConf = {**commonConfig, **unpartitionDataConfig, **incrementalConfig, **deleteDataConfig}
+                    outputDf_deleted.write.format(&#39;hudi&#39;).options(**combinedConf).mode(&#39;Append&#39;).save(targetPath)
+        else:
+            outputDf = inputDf.drop(*dropColumnList)
+            if outputDf.count() &gt; 0:
+                logger.info(&#39;Inital load.&#39;)
+                if (isPartitionKey):
+                    logger.info(&#39;Writing to partitioned Hudi table.&#39;)
+                    outputDf = outputDf.withColumn(partitionKey,concat(lit(partitionKey+&#39;=&#39;),col(partitionKey)))
+                    combinedConf = {**commonConfig, **partitionDataConfig, **initLoadConfig}
+                    outputDf.write.format(&#39;hudi&#39;).options(**combinedConf).mode(&#39;Overwrite&#39;).save(targetPath)
+                else:
+                    logger.info(&#39;Writing to unpartitioned Hudi table.&#39;)
+                    combinedConf = {**commonConfig, **unpartitionDataConfig, **initLoadConfig}
+                    outputDf.write.format(&#39;hudi&#39;).options(**combinedConf).mode(&#39;Overwrite&#39;).save(targetPath)
+    else:
+        if (isPartitionKey):
+            logger.info(&#39;Writing to partitioned glueparquet table.&#39;)
+            sink = glueContext.getSink(connection_type = &#39;s3&#39;, path= targetPath, enableUpdateCatalog = True, updateBehavior = &#39;UPDATE_IN_DATABASE&#39;, partitionKeys=[partitionKey])
+        else:
+            logger.info(&#39;Writing to unpartitioned glueparquet table.&#39;)
+            sink = glueContext.getSink(connection_type = &#39;s3&#39;, path= targetPath, enableUpdateCatalog = True, updateBehavior = &#39;UPDATE_IN_DATABASE&#39;)
+        sink.setFormat(&#39;glueparquet&#39;)
+        sink.setCatalogInfo(catalogDatabase = targetDBName, catalogTableName = targetTableName)
+        outputDyf = DynamicFrame.fromDF(inputDf.drop(*dropColumnList), glueContext, &#39;outputDyf&#39;)
+        sink.writeFrame(outputDyf)
+except BaseException as e:
+    logger.info(&#39;An error occurred while processing table &#39; + targetDBName + &#39;.&#39; + targetTableName + &#39;. Please check the error logs...&#39;)
+    print(e)
+
+job.commit()
+</code></pre><ol start="4">
+<li>Chọn vào Job Detail:</li>
+</ol>
+<ul>
+<li>Nhập Name là: glue-hudi-job</li>
+<li>Chọn Iam Role tương tự như thế này: <em>-GlueLabRole-</em></li>
+</ul>
+<ol start="5">
+<li>
+<p>Chọn Type là <strong>Spark</strong></p>
+</li>
+<li>
+<p>Glue version: <strong>Glue 3.0 - Supports spark 3.1, Scala 2, Python 3.</strong></p>
+</li>
+<li>
+<p>Chọn <strong>Language</strong> là <strong>Python 3</strong></p>
+</li>
+<li>
+<p>Disable <strong>Job bookmark</strong></p>
+</li>
+<li>
+<p>Tất cả còn lại để mặc định.</p>
+</li>
+<li>
+<p>Mở rộng Advanced Properties</p>
+</li>
+<li>
+<p>Nhập <strong>Job parameters</strong></p>
+</li>
+<li>
+<p>Nhấn Save và click <strong>Run</strong></p>
+</li>
+<li>
+<p>Đợi tới khi Succeeded
+<img src="/WorkShopTwo/images/4.s3/45.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Glue job sẽ tạo HUDI tables ticket_purchase_hist</p>
+</li>
+</ol>
+<h3 id="step-2--truy-vấn-hudi-table-trong-athena">Step 2 – Truy vấn HUDI table trong Athena</h3>
+<ol>
+<li>
+<p>Đảm báo rằng HUDI table được tạo thành công. Click vào Tables</p>
+</li>
+<li>
+<p>Bạn sẽ thấy new tables là ticket_purchase_hist và database là hudi_sample
+<img src="/WorkShopTwo/images/4.s3/46.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Truy cập Amazon Athena Console và chọn hudi_sample Database</p>
+</li>
+<li>
+<p>Setup nơi lưu kết quả.</p>
+</li>
+</ol>
+<p><img src="/WorkShopTwo/images/4.s3/47.png" alt="DeployCF"></p>
+<p><img src="/WorkShopTwo/images/4.s3/48.png" alt="DeployCF"></p>
+<ol start="5">
+<li>Chọn ellipsis và <strong>Preview table</strong>, ticket_purchase_hist</li>
+<li>Count ticket_purchase_hist bằng cách chạy query sau</li>
+</ol>
+<pre tabindex="0"><code>select count(1) from hudi_sample.ticket_purchase_hist
+</code></pre><p><img src="/WorkShopTwo/images/4.s3/49.png" alt="DeployCF"></p>
+<ol start="7">
+<li>Kết quả HUDI tables
+<img src="/WorkShopTwo/images/4.s3/50.png" alt="DeployCF"></li>
+</ol>
+<h3 id="step-3--hudi-hudi-configurations">Step 3 – HUDI HUDI configurations</h3>
+<p>Một số  configurations:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hoodie.datasource.write.table.type</td>
+<td style="text-align:center">Chọn COPY_ON_WRITE hoặc MERGE_ON_READ table type.</td>
+</tr>
+<tr>
+<td>hoodie.datasource.write.recordkey.field</td>
+<td style="text-align:center">Tương tự primary key ở cơ sở dữ liệu quan hệ</td>
+</tr>
+<tr>
+<td>hoodie.datasource.hive_sync.partition_fields</td>
+<td style="text-align:center">Trường trong bảng dùng để xác định các hive partition columns</td>
+</tr>
+<tr>
+<td>hoodie.datasource.write.operation</td>
+<td style="text-align:center">Chọn upsert, insert hoặc bulkinsert cho các hành động write</td>
+</tr>
+<tr>
+<td>hoodie.datasource.read.end.instanttime</td>
+<td style="text-align:center">Thời gian tức thì nạp data</td>
+</tr>
+</tbody>
+</table>
+<p>Xem thêm các configurations khác <a href="https://hudi.apache.org/docs/configurations">Apache Hudi documentation</a></p>
+<h3 id="step-4--upsert-incremental-changes">Step 4 – Upsert Incremental Changes</h3>
+<p>Ở các bước trước, chúng ta đã tạo một bảng HUDI có tên ticket_purchase_hist, bao gồm toàn bộ bảng nguồn. Bây giờ, hãy tạo một số dữ liệu CDC để có thể cập nhật các thay đổi gia tăng vào bảng HUDI.</p>
+<ol>
+<li>
+<p>Làm theo các bước ở đây để tạo CDC data -  <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/976050cc-0606-4b23-b49f-ca7b8ac4b153/en-US/400/401/410-pre-lab-1#generate-and-replicate-the-cdc-data-(optional)">Generate CDC Data</a></p>
+</li>
+<li>
+<p>Sau khi CDC data được tạo, đảm bảo rằng <strong>cdctask</strong> trong DMS cập nhập bản ghi như bên dưới:
+<img src="/WorkShopTwo/images/4.s3/51.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Chạy Glue job glue-hudi-job để upsert the CDC changestới HUDI table ticket_purchase_hist. Sau khi Glue job chạy thành công. Bạn có thể truy cập <a href="https://console.aws.amazon.com/athena"> Amazon Athena Console </a> để xác minh việc tăng số lượng bản ghi.
+<img src="/WorkShopTwo/images/4.s3/52.png" alt="DeployCF"></p>
+</li>
+</ol>
+<h3 id="step-5--chạy-incremental-queries-sử-dụng-spark-sql">Step 5 – Chạy Incremental Queries sử dụng Spark SQL</h3>
+<ol>
+<li>Truy cập AWS Glue Console, click <strong>Job</strong></li>
+</ol>
+<p><img src="/WorkShopTwo/images/4.s3/53.png" alt="DeployCF"></p>
+<ol start="2">
+<li>
+<p>Chọn gluehudijob. Nhấn <strong>Clone job</strong> ở <strong>Action</strong>
+<img src="/WorkShopTwo/images/4.s3/54.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Copy đoạn code sau.</p>
+</li>
+</ol>
+<pre tabindex="0"><code>import os
+import sys
+
+import boto3
+from awsglue.context import GlueContext
+from awsglue.dynamicframe import DynamicFrame
+from awsglue.job import Job
+from awsglue.utils import getResolvedOptions
+from botocore.exceptions import ClientError
+from pyspark.sql.session import SparkSession
+from pyspark.sql.types import *
+
+args = getResolvedOptions(sys.argv, [&#39;JOB_NAME&#39;, &#39;CURATED_BUCKET&#39;])
+
+spark = SparkSession.builder.config(
+    &#39;spark.serializer&#39;,
+    &#39;org.apache.spark.serializer.KryoSerializer&#39;).config(&#39;spark.sql.hive.convertMetastoreParquet&#39;,&#39;false&#39;).getOrCreate()
+
+glueContext = GlueContext(spark.sparkContext)
+job = Job(glueContext)
+job.init(args[&#39;JOB_NAME&#39;], args)
+logger = glueContext.get_logger()
+
+logger.info(&#39;Initialization.&#39;)
+glueClient = boto3.client(&#39;glue&#39;)
+
+logger.info(&#39;Fetching configuration.&#39;)
+region = os.environ[&#39;AWS_DEFAULT_REGION&#39;]
+
+curatedBucketName = args[&#39;CURATED_BUCKET&#39;]
+
+if curatedBucketName == None:
+    raise Exception(
+        &#34;Please input the bucket names in job parameters. Refer: https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-crawler-pyspark-extensions-get-resolved-options.html&#34;
+    )
+
+keys = {
+    &#34;dms_sample.ticket_purchase_hist&#34;: {&#34;primaryKey&#34;: &#34;sporting_event_ticket_id&#34;}
+    }
+
+curatedS3TablePathPrefix = &#39;s3://&#39; + curatedBucketName + &#39;/hudi/&#39;
+
+hudiDBName = &#39;hudi_sample&#39;
+hudiTableName = &#39;ticket_purchase_hist&#39;
+primaryKey = &#39;sporting_event_ticket_id&#39;
+
+unpartitionDataConfig = {
+    &#39;hoodie.datasource.hive_sync.partition_extractor_class&#39;: &#39;org.apache.hudi.hive.NonPartitionedExtractor&#39;,
+    &#39;hoodie.datasource.write.keygenerator.class&#39;: &#39;org.apache.hudi.keygen.NonpartitionedKeyGenerator&#39;
+}
+
+incrementalConfig = {
+    &#39;hoodie.upsert.shuffle.parallelism&#39;: 68,
+    &#39;hoodie.datasource.write.operation&#39;: &#39;upsert&#39;,
+    &#39;hoodie.cleaner.policy&#39;: &#39;KEEP_LATEST_COMMITS&#39;,
+    &#39;hoodie.cleaner.commits.retained&#39;: 10
+}
+
+all_commits = list(
+    map(
+        lambda row: row[0],
+        spark.sql(
+            &#34;select distinct(_hoodie_commit_time) as commitTime from &#34; + hudiDBName + &#34;.ticket_purchase_hist order by commitTime&#34;
+        ).limit(50).collect()))
+
+logger.info(&#39;Total number of commits are: &#39; + str(len(all_commits)))
+beginTime = all_commits[len(all_commits) - 2]  # commit time we are interested in
+
+# incrementally query data
+incremental_read_options = {
+    &#39;hoodie.datasource.query.type&#39;: &#39;incremental&#39;,
+    &#39;hoodie.datasource.read.begin.instanttime&#39;: beginTime,
+}
+
+incrementalDF = spark.read.format(&#34;hudi&#34;).options(**incremental_read_options). \
+  load(curatedS3TablePathPrefix + hudiDBName + &#39;/&#39; + hudiTableName)
+
+commonConfig = {
+    &#39;className&#39;: &#39;org.apache.hudi&#39;,
+    &#39;hoodie.datasource.hive_sync.use_jdbc&#39;: &#39;false&#39;,
+    &#39;hoodie.datasource.write.precombine.field&#39;: &#39;transaction_date_time&#39;,
+    &#39;hoodie.datasource.write.recordkey.field&#39;: primaryKey,
+    &#39;hoodie.table.name&#39;: hudiTableName + &#39;_incremental&#39;,
+    &#39;hoodie.datasource.hive_sync.database&#39;: hudiDBName,
+    &#39;hoodie.datasource.hive_sync.table&#39;: hudiTableName + &#39;_incremental&#39;,
+    &#39;hoodie.datasource.hive_sync.enable&#39;: &#39;true&#39;
+}
+
+combinedConf = { **commonConfig, **unpartitionDataConfig, **incrementalConfig }
+
+incrementalDF.write.format(&#39;hudi&#39;).options(**combinedConf).mode(&#39;Overwrite&#39;).save(curatedS3TablePathPrefix + &#39;/&#39; + hudiDBName + &#39;/&#39; + hudiTableName + &#39;_incremental&#39;)
+job.commit()
+</code></pre><ol start="4">
+<li>Chọn <strong>Job Details</strong></li>
+</ol>
+<ul>
+<li>Name: incremental-hudi-job</li>
+<li>IAM role: <em>-GlueLabRole-</em></li>
+</ul>
+<ol start="5">
+<li>Click <strong>Save</strong> and <strong>Run</strong></li>
+<li>Đợi status chuyển Succeeded</li>
+<li>Truy cập Amazon Athena console và truy vấn table ticket_purchase_hist_incremental</li>
+</ol>
+<p><img src="/WorkShopTwo/images/4.s3/55.png" alt="DeployCF"></p>
+<h3 id="tổng-kết">Tổng kết</h3>
+<p>Chúng ta đã thực hiện được:</p>
+<ol>
+<li>Glue job để tạo HUDI tables tương ứng với source tables ticket_purchase_hist cho CDC changes</li>
+<li>Glue job khác để nhận incremental changes và lưu kết quả vào tables ticket_purchase_hist_incremental</li>
+<li>Truy vấn HUDI tables bằng Amazon Athena</li>
+</ol>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/4-transformingdatawithglue/4.1-datavalidationandetl/" title="Data Validation and ETL"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/5-labqueryandvisualize/" title="Lab: Query and Visualize" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1715586281"></script>
+    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
+    <script src="/js/jquery.sticky.js?1715586281"></script>
+    <script src="/js/featherlight.min.js?1715586281"></script>
+    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
+    <script src="/js/learn.js?1715586281"></script>
+    <script src="/js/hugo-learn.js?1715586281"></script>
+
+    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Athena and QuickSight :: Getting Hands On with Amazon GuardDuty</title>
+
+    
+    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
+    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
+    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
+    <link href="/css/theme.css?1715586281" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/5-labqueryandvisualize/5.1-athenaandquicksight/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1715586281"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-introduce/" title="Giới thiệu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-introduce/">
+           <b> 1. </b> Giới thiệu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/" title="Lab. Phát hiện luồng click chuột bất thường bằng Amazon Managed Service for Apache Flink" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/">
+           <b> 2 </b> Lab. Phát hiện luồng click chuột bất thường bằng Amazon Managed Service for Apache Flink
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.1-prepare/" title="Phát hiện luồng click chuột bất thường bằng Amazon Managed Service for Apache Flink" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.1-prepare/">
+           <b> 2.1 </b> Phát hiện luồng click chuột bất thường bằng Amazon Managed Service for Apache Flink
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.2-lab/" title="Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.2-lab/">
+           <b> 2.2 </b> Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.3-labetl/" title="Lab. Streaming ETL with Glue " class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.3-labetl/">
+           <b> 2.3 </b> Lab. Streaming ETL with Glue 
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.4-kinesis/" title="Real-time Streaming with Kinesis" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.4-kinesis/">
+           <b> 2.4 </b> Real-time Streaming with Kinesis
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.5-msk/" title="Clickstream Analytics using MSK" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.5-msk/">
+           <b> 2.5 </b> Clickstream Analytics using MSK
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-ingestionwithdms/" title="Nhập data với DMS" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-ingestionwithdms/">
+           <b> 3. </b> Nhập data với DMS
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-ingestionwithdms/3.1-dms-migration-lab/" title=" Option1: DMS Migration Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-ingestionwithdms/3.1-dms-migration-lab/">
+           <b> 3.1. </b>  Option1: DMS Migration Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-ingestionwithdms/3.3-skip-dms-lab/" title="Option 2: AutoComplete DMS Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-ingestionwithdms/3.3-skip-dms-lab/">
+           <b> 3.2. </b> Option 2: AutoComplete DMS Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-ingestionwithdms/3.2-private-instance/" title="Option 3: Skip DMS Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-ingestionwithdms/3.2-private-instance/">
+           <b> 3.2. </b> Option 3: Skip DMS Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-transformingdatawithglue/" title="Lab: Transforming data with Glue" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-transformingdatawithglue/">
+           <b> 4. </b> Lab: Transforming data with Glue
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-transformingdatawithglue/4.1-datavalidationandetl/" title="Data Validation and ETL" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-transformingdatawithglue/4.1-datavalidationandetl/">
+           <b> 4.1 </b> Data Validation and ETL
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-transformingdatawithglue/4.2-hudi/" title="Incremental Data Processing with Hudi" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-transformingdatawithglue/4.2-hudi/">
+           <b> 4.2 </b> Incremental Data Processing with Hudi
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-labqueryandvisualize/" title="Lab: Query and Visualize" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/5-labqueryandvisualize/">
+           <b> 5. </b> Lab: Query and Visualize
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-labqueryandvisualize/5.1-athenaandquicksight/" title="Athena and QuickSight" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/5-labqueryandvisualize/5.1-athenaandquicksight/">
+           <b> 5.1 </b> Athena and QuickSight
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-labqueryandvisualize/5.2-athenafederatedquery/" title="Athena Federated query" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-labqueryandvisualize/5.2-athenafederatedquery/">
+           <b> 5.2 </b> Athena Federated query
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-labqueryandvisualize/5.3-athenaandsagemaker/" title="Athena and SageMaker" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-labqueryandvisualize/5.3-athenaandsagemaker/">
+           <b> 5.3 </b> Athena and SageMaker
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/" title="Lab: Data Lake Automation" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/">
+          <b>6. </b>Lab: Data Lake Automation
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/6.1-lakeformationlab/" title="Lake Formation Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/6.1-lakeformationlab/">
+           <b> 6.1 </b> Lake Formation Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/6.2-lakeformationlabforapachehuditables/" title="Lake Formation Lab for Apache Hudi Tables" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/6.2-lakeformationlabforapachehuditables/">
+           <b> 6.2 </b> Lake Formation Lab for Apache Hudi Tables
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/6.3-lakeformationlabforapacheicebergtables/" title="Lake Formation Lab for Apache Iceberg Tables" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/6.3-lakeformationlabforapacheicebergtables/">
+           <b> 6.3 </b> Lake Formation Lab for Apache Iceberg Tables
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/6.4-lakeformationlabordeltatables/" title="Lake Formation Lab for Delta Tables" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/6.4-lakeformationlabordeltatables/">
+           <b> 6.4 </b> Lake Formation Lab for Delta Tables
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-bonuslabgluedatabrew/" title="Bonus Lab: Glue DataBrew" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-bonuslabgluedatabrew/">
+          <b>7. </b>Bonus Lab: Glue DataBrew
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-bonuslabgluedatabrew/7.1-databrewpre-lab/" title="DataBrew Pre-Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-bonuslabgluedatabrew/7.1-databrewpre-lab/">
+           <b> 7.1 </b> DataBrew Pre-Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-bonuslabgluedatabrew/7.2-datapreparationwithgluedatabrew/" title="Data preparation with Glue DataBrew" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-bonuslabgluedatabrew/7.2-datapreparationwithgluedatabrew/">
+           <b> 7.2 </b> Data preparation with Glue DataBrew
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/8-clean/" title="Clean up" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/8-clean/">
+          <b>8. </b>Clean up
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="http://awsstudygroup.com"><i class='fab fa-aws'></i> AWS Study Group - Blog</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/660548818043427/"><i class='fab fa-facebook'></i> AWS Study Group - FB Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="/5-labqueryandvisualize/5.1-athenaandquicksight/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>23-04-2024</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
+            <i> <a href="https://www.linkedin.com/in/nguy%E1%BB%85n-xu%C3%A2n-d%C6%B0%C6%A1ng-132936285/"  style="color:orange">Dương Nguyễn Xuân  </a> <br>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Data Engineering Immersion Day</a> > <a href='/5-labqueryandvisualize/'>Lab: Query and Visualize</a> > Athena and QuickSight
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#step">Step</a></li>
+        <li><a href="#yêu-cầu">Yêu cầu</a></li>
+        <li><a href="#bắt-đẩu">Bắt đẩu</a></li>
+        <li><a href="#truy-vấn-dữ-liệu-với-amazon-athena">Truy vấn dữ liệu với Amazon Athena</a></li>
+        <li><a href="#build-an-amazon-quicksight-dashboard">Build an Amazon QuickSight Dashboard</a></li>
+        <li><a href="#tạo-quicksight-charts">Tạo QuickSight Charts</a></li>
+        <li><a href="#tạo-quicksight-parameters">Tạo QuickSight Parameters</a></li>
+        <li><a href="#tạo-quicksight-filter">Tạo QuickSight Filter</a></li>
+        <li><a href="#thêm-calculated-fields">Thêm Calculated Fields</a></li>
+        <li><a href="#cost-allocation-tags">Cost Allocation Tags</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Athena and QuickSight
+            </h1>
+          
+
+        
+
+
+
+	<h3 id="step">Step</h3>
+<ul>
+<li>Yêu cầu</li>
+<li>Bắt đầu</li>
+<li>Truy vấn data với Amazon Athena</li>
+<li>Dựng Amazon QuickSight Dashboard</li>
+<li>Set up QuickSight</li>
+<li>Tạo QuickSight Charts</li>
+<li>Tạo QuickSight Parameters</li>
+<li>Tạo  QuickSight Filter</li>
+<li>Thêm Calculated Fields</li>
+<li>Amazon QuickSight ML-Insights (Optional)</li>
+<li>Athena Workgroups to Control Query Access and Costs (Optional)</li>
+<li>Workflow setup to separate workloads</li>
+<li>Explore the features of workgroups</li>
+<li>Managing Query Usage and Cost</li>
+<li>Sử dụng tag để phân bổ chi phí</li>
+</ul>
+<h3 id="yêu-cầu">Yêu cầu</h3>
+<p>Hoàn thành <a href="../../3-IngestionwithDMS/_index.md">Ingestion with DMS</a> và <a href="../../4-TransformingdatawithGlue/_index.md">Transforming data with Glue ETL</a> labs.</p>
+<h3 id="bắt-đẩu">Bắt đẩu</h3>
+<p>Trong bài lab này, chúng ta sẽ hoàn thành các task sau:</p>
+<ol>
+<li>Truy vấn dữ liệu và tạo view với Amazon Athena</li>
+<li>Athena Workgroups để Điều khiển query access và costs</li>
+<li>Dựng dashboard với Amazon QuickSight</li>
+</ol>
+<h3 id="truy-vấn-dữ-liệu-với-amazon-athena">Truy vấn dữ liệu với Amazon Athena</h3>
+<ol>
+<li>Truy cập Athena</li>
+</ol>
+<p><img src="/WorkShopTwo/images/5.fwd/1.png" alt="Athena"></p>
+<ol start="2">
+<li>
+<p>Chọn database <strong>&ldquo;ticketdata&rdquo;</strong>
+<img src="/WorkShopTwo/images/5.fwd/2.png" alt="Athena"></p>
+</li>
+<li>
+<p>Chọn table <strong>&ldquo;parquet_sporting_event_ticket&rdquo;</strong> để xem các trường</p>
+</li>
+<li>
+<p>Copy đoạn SQL sau và nhấn <strong>Run</strong></p>
+</li>
+</ol>
+<pre tabindex="0"><code>SELECT
+e.id AS event_id,
+e.sport_type_name AS sport,
+e.start_date_time AS event_date_time,
+h.name AS home_team,
+a.name AS away_team,
+l.name AS location,
+l.city
+FROM parquet_sporting_event e,
+parquet_sport_team h,
+parquet_sport_team a,
+parquet_sport_location l
+WHERE
+e.home_team_id = h.id
+AND e.away_team_id = a.id
+AND e.location_id = l.id;
+</code></pre><p>Kết quả như sau:</p>
+<p><img src="/WorkShopTwo/images/5.fwd/3.png" alt="Athena">
+<img src="/WorkShopTwo/images/5.fwd/4.png" alt="Athena"></p>
+<ol start="5">
+<li>
+<p>Chọn <strong>Create</strong> và <strong>View from query</strong></p>
+</li>
+<li>
+<p>Đặt tên view là sporting_event_info vào click <strong>Create</strong>
+<img src="/WorkShopTwo/images/5.fwd/5.png" alt="Athena"></p>
+</li>
+</ol>
+<p>View đã được khởi tạo
+<img src="/WorkShopTwo/images/5.fwd/6.png" alt="Athena"></p>
+<ol start="7">
+<li>Copy đoạn Sql sau sang một tab mới</li>
+</ol>
+<pre tabindex="0"><code>SELECT t.id AS ticket_id,
+e.event_id,
+e.sport,
+e.event_date_time,
+e.home_team,
+e.away_team,
+e.location,
+e.city,
+t.seat_level,
+t.seat_section,
+t.seat_row,
+t.seat,
+t.ticket_price,
+p.full_name AS ticketholder
+FROM sporting_event_info e,
+parquet_sporting_event_ticket t,
+parquet_person p
+WHERE
+t.sporting_event_id = e.event_id
+AND t.ticketholder_id = p.id
+</code></pre><p><img src="/WorkShopTwo/images/5.fwd/7.png" alt="Athena"></p>
+<ol start="8">
+<li>Lưu lại với tên: create_view_sporting_event_ticket_info
+<img src="/WorkShopTwo/images/5.fwd/8.png" alt="Athena"></li>
+</ol>
+<p>Click <strong>Run</strong></p>
+<p><img src="/WorkShopTwo/images/5.fwd/9.png" alt="Athena"></p>
+<p>Kết quả xuất hiện như sau:
+<img src="/WorkShopTwo/images/5.fwd/10.png" alt="Athena"></p>
+<ol start="9">
+<li>
+<p>Đặt tên view là: sporting_event_ticket_info và click <strong>Create</strong>
+<img src="/WorkShopTwo/images/5.fwd/11.png" alt="Athena"></p>
+</li>
+<li>
+<p>Copy đoạn Sql sau sang một tab mới</p>
+</li>
+</ol>
+<pre tabindex="0"><code>SELECT
+sport,
+count(distinct location) as locations,
+count(distinct event_id) as events,
+count(*) as tickets,
+avg(ticket_price) as avg_ticket_price
+FROM sporting_event_ticket_info
+GROUP BY 1
+ORDER BY 1;
+</code></pre><p>Lưu với tên là: analytics_sporting_event_ticket_info
+<img src="/WorkShopTwo/images/5.fwd/12.png" alt="Athena"></p>
+<p>Click Run</p>
+<p><img src="/WorkShopTwo/images/5.fwd/13.png" alt="Athena"></p>
+<h3 id="build-an-amazon-quicksight-dashboard">Build an Amazon QuickSight Dashboard</h3>
+<h4 id="set-up-quicksight">Set up QuickSight</h4>
+<ol>
+<li>
+<p>Truy cập <strong>QuickSight</strong>
+<img src="/WorkShopTwo/images/5.fwd/15.png" alt="Athena"></p>
+</li>
+<li>
+<p><strong>Sign up for QuickSight.</strong></p>
+</li>
+</ol>
+<p><img src="/WorkShopTwo/images/5.fwd/16.png" alt="Athena"></p>
+<ol start="3">
+<li>
+<p>Chọn Enterprise Version</p>
+</li>
+<li>
+<p>Continue
+<img src="/WorkShopTwo/images/5.fwd/17.png" alt="Athena"></p>
+</li>
+<li>
+<p>Chọn No, Maybe Later, Ở màn hình mới để mặc định.</p>
+</li>
+<li>
+<p>Chọn region và check vào các box, enable auto discovery, Amazon Athena, and Amazon S3. Nhập tên và email cho account QuickSight</p>
+</li>
+<li>
+<p>Chọn DMS bucket và chọn <strong>Finish</strong></p>
+</li>
+</ol>
+<p><img src="/WorkShopTwo/images/5.fwd/18.png" alt="Athena"></p>
+<p><img src="/WorkShopTwo/images/5.fwd/19.png" alt="Athena"></p>
+<p>Nhấn <strong>Finish</strong></p>
+<ol start="8">
+<li>
+<p>Chọn New analysis
+<img src="/WorkShopTwo/images/5.fwd/20.png" alt="Athena"></p>
+</li>
+<li>
+<p>Chọn <strong>New dataset</strong>
+<img src="/WorkShopTwo/images/5.fwd/21.png" alt="Athena"></p>
+</li>
+<li>
+<p>Tại màn Create a Dataset, chọn Athena</p>
+</li>
+</ol>
+<p><img src="/WorkShopTwo/images/5.fwd/22.png" alt="Athena"></p>
+<ol start="11">
+<li>
+<p>Data source name: ticketdata-qs, và chọn <strong>Validate connection</strong></p>
+</li>
+<li>
+<p>Click <strong>Create data source</strong>
+<img src="/WorkShopTwo/images/5.fwd/23.png" alt="Athena"></p>
+</li>
+<li>
+<p>Chọn database <strong>ticketdata</strong></p>
+</li>
+<li>
+<p>Chọn bảng <strong>sporting_event_ticket_info</strong> và nhấn <strong>Select</strong></p>
+</li>
+</ol>
+<p><img src="/WorkShopTwo/images/5.fwd/24.png" alt="Athena"></p>
+<ol start="15">
+<li>Chọn option <strong>Import to SPICE for quicker analytics</strong> và nhấn <strong>Visualize</strong>.</li>
+</ol>
+<p><img src="/WorkShopTwo/images/5.fwd/25.png" alt="Athena"></p>
+<p>Chúng ta có thể quan sát thấy QuickSight Visualize interface và bắt đầu xây dựng dashboard</p>
+<p><img src="/WorkShopTwo/images/5.fwd/26.png" alt="Athena"></p>
+<h3 id="tạo-quicksight-charts">Tạo QuickSight Charts</h3>
+<p>Trong phần này chúng ta sẽ cùng tìm hiểu các loại chart</p>
+<ol>
+<li>
+<p>Chọn cột ticket_price để tạo chart.</p>
+</li>
+<li>
+<p>Chọn <strong>expand icon</strong> và chọn <strong>Show as Currency</strong>
+<img src="/WorkShopTwo/images/5.fwd/27.png" alt="Athena"></p>
+</li>
+<li>
+<p>Click <strong>Add button</strong> từ Visuals pane</p>
+</li>
+</ol>
+<ul>
+<li>Visual types: Vertical bar chart</li>
+<li>X-axis Fields list chọn <strong>event_date_time</strong></li>
+<li>Y-axis chọn <strong>ticket_price</strong> từ Field list.</li>
+</ul>
+<p><img src="/WorkShopTwo/images/5.fwd/28.png" alt="Athena"></p>
+<ol start="4">
+<li>Bạn có thể kéo và di chuyển các hình ảnh khác để điều chỉnh không gian trong trang tổng quan. Trong danh sách Trường, nhấp và kéo trường Seat_level vào hộp Nhóm/Màu. Bạn cũng có thể sử dụng thanh trượt bên dưới trục x để vừa với tất cả dữ liệu.</li>
+</ol>
+<p><img src="/WorkShopTwo/images/5.fwd/29.png" alt="Athena"></p>
+<ol start="5">
+<li>
+<p>Trong Visuals pane, chọn <strong>Vertical bar chart</strong> và <strong>Clustered bar combo chart</strong> icon</p>
+</li>
+<li>
+<p>Tại Fields list, chọn <strong>ticketholder</strong></p>
+</li>
+<li>
+<p>Tại <strong>Lines</strong> box, chọn <strong>Aggregate: Count Distinct</strong>.</p>
+</li>
+</ol>
+<p><img src="/WorkShopTwo/images/5.fwd/30.png" alt="Athena"></p>
+<ol start="8">
+<li>Chọn <strong>insight</strong> icon</li>
+</ol>
+<p><img src="/WorkShopTwo/images/5.fwd/31.png" alt="Athena"></p>
+<h3 id="tạo-quicksight-parameters">Tạo QuickSight Parameters</h3>
+<p>Trong phần này chúng ta sẽ tạo parameters cho dashboard và thêm filter.</p>
+<ol>
+<li>Chọn Parameters từ tool bar</li>
+</ol>
+<p><img src="/WorkShopTwo/images/5.fwd/32.png" alt="Athena"></p>
+<ol start="2">
+<li>
+<p>Chọn <strong>Add</strong> để tạo parameter</p>
+</li>
+<li>
+<p>Đặt tên là EventFrom</p>
+</li>
+<li>
+<p>Chọn Data type là Datetime</p>
+</li>
+<li>
+<p>Time granularity là Hour</p>
+</li>
+<li>
+<p>Hãy chọn giá trị từ lịch làm ngày bắt đầu có sẵn trong biểu đồ của bạn cho event_date_time</p>
+</li>
+<li>
+<p>Chọn <strong>Create</strong> và đóng dialog
+<img src="/WorkShopTwo/images/5.fwd/33.png" alt="Athena"></p>
+</li>
+<li>
+<p>Tạo thêm parameter với thông số sau:</p>
+</li>
+</ol>
+<ul>
+<li>Name: EventTo</li>
+<li>Chọn Data type là Datetime</li>
+<li>Time granularity là Hour</li>
+<li>Hãy chọn giá trị từ lịch làm ngày bắt đầu có sẵn trong biểu đồ của bạn cho event_date_time</li>
+<li>Click <strong>Create</strong></li>
+</ul>
+<p><img src="/WorkShopTwo/images/5.fwd/35.png" alt="Athena"></p>
+<ol start="9">
+<li>Trong màn hình tiếp theo. Click vào 3 chấm của <strong>EventFrom</strong> parameter và chọn <strong>Add control</strong></li>
+</ol>
+<p><img src="/WorkShopTwo/images/5.fwd/36.png" alt="Athena"></p>
+<ol start="10">
+<li>
+<p>Nhập name là Event From và nhấn <strong>Add</strong>
+<img src="/WorkShopTwo/images/5.fwd/37.png" alt="Athena"></p>
+</li>
+<li>
+<p>Tương tự với <strong>EventTo</strong>
+<img src="/WorkShopTwo/images/5.fwd/38.png" alt="Athena"></p>
+</li>
+</ol>
+<p>Bây giờ bạn có thể xem và mở rộng phần Kiểm soát phía trên biểu đồ.</p>
+<p><img src="/WorkShopTwo/images/5.fwd/39.png" alt="Athena"></p>
+<h3 id="tạo-quicksight-filter">Tạo QuickSight Filter</h3>
+<ol>
+<li>Chọn <strong>Filter</strong></li>
+<li>Click (+) để thêm filter event_date_time</li>
+</ol>
+<p><img src="/WorkShopTwo/images/5.fwd/40.png" alt="Athena"></p>
+<ol start="3">
+<li>
+<p>Chọn edit
+<img src="/WorkShopTwo/images/5.fwd/41.png" alt="Athena"></p>
+</li>
+<li>
+<p>Chọn <strong>All applicable visuals</strong> và <strong>Applied To</strong> dropdown</p>
+</li>
+<li>
+<p>Filter type chọn <strong>Date &amp; Time range</strong> và Condition là <strong>Between</strong></p>
+</li>
+<li>
+<p>Chọn option <strong>Use Parameter</strong>, chọn <strong>Yes</strong></p>
+</li>
+<li>
+<p>Start date parameter: <strong>EventFrom</strong></p>
+</li>
+<li>
+<p>End date parameter: <strong>EventTo</strong>
+<img src="/WorkShopTwo/images/5.fwd/42.png" alt="Athena"></p>
+</li>
+<li>
+<p>Click <strong>Apply</strong>.</p>
+</li>
+</ol>
+<h3 id="thêm-calculated-fields">Thêm Calculated Fields</h3>
+<ol>
+<li>
+<p>Chọn <strong>Add Calculated Field</strong>
+<img src="/WorkShopTwo/images/5.fwd/43.png" alt="Athena"></p>
+</li>
+<li>
+<p>Nhập name là: event_day_of_week</p>
+</li>
+<li>
+<p>Formula: extract(&lsquo;WD&rsquo;,{event_date_time})</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>
+<img src="/WorkShopTwo/images/5.fwd/44.png" alt="Athena"></p>
+</li>
+<li>
+<p>Thêm một trường được tính toán khác với các thuộc tính sau:</p>
+</li>
+</ol>
+<ul>
+<li>Calculated field name: event_hour_of_day</li>
+<li>Formula: extract(&lsquo;HH&rsquo;,{event_date_time})</li>
+</ul>
+<ol start="6">
+<li>Chọn Visualize icon từ the Tool bar và nhấn <strong>Add visual</strong></li>
+</ol>
+<p><img src="/WorkShopTwo/images/5.fwd/45.png" alt="Athena"></p>
+<ol start="7">
+<li>
+<p>Field type&quot; scatter plot</p>
+</li>
+<li>
+<p>Tại Fields list, Chọn các thuộc tính sau:</p>
+</li>
+</ol>
+<ul>
+<li>X-axis: &ldquo;event_hour_of_day&rdquo;</li>
+<li>Y-axis: &ldquo;event_day_of_week&rdquo;</li>
+<li>Size: &ldquo;ticket_price&rdquo;
+<img src="/WorkShopTwo/images/5.fwd/46.png" alt="Athena"></li>
+</ul>
+<p>Pushlish hoặc Share
+<img src="/WorkShopTwo/images/5.fwd/47.png" alt="Athena"></p>
+<p>Dashboard là ảnh chụp nhanh phân tích chỉ đọc mà bạn có thể chia sẻ với những người dùng Amazon QuickSight khác nhằm mục đích báo cáo. Trong Dashboard, những người dùng khác vẫn có thể xem hình ảnh và dữ liệu nhưng điều đó sẽ không sửa đổi tập dữ liệu.</p>
+<p>Bạn có thể chia sẻ phân tích với một hoặc nhiều người dùng khác mà bạn muốn cộng tác để tạo hình ảnh. Phân tích cung cấp các cách sử dụng khác để ghi và sửa đổi tập dữ liệu.</p>
+<h3 id="cost-allocation-tags">Cost Allocation Tags</h3>
+<p>Khi bạn tạo hai nhóm làm việc: nhóm làm việcA và nhóm làm việcB, bạn cũng đã tạo tên dưới dạng thẻ. Các thẻ này có thể được sử dụng trong bảng điều khiển Quản lý chi phí và thanh toán để xác định mức sử dụng cho mỗi nhóm làm việc.</p>
+<p>Ví dụ: bạn có thể tạo một bộ thẻ cho nhóm làm việc trong tài khoản của mình để giúp bạn theo dõi chủ sở hữu nhóm làm việc hoặc xác định nhóm làm việc theo mục đích của họ. Bạn có thể xem các thẻ cho một nhóm làm việc trong trang “Xem chi tiết” cho nhóm làm việc đang được xem xét.</p>
+<p>Bạn có thể thêm tag sau khi đã tạo workgroup. Để tạo tag:</p>
+<ol>
+<li><a href="https://console.aws.amazon.com/athena/home">Athena console</a>, chọn tab Workgroups và chọn workgroup.</li>
+<li>Chọn tab tags.</li>
+<li>Trên tab tags, bấm vào Manage tags, sau đó chỉ định key và value cho tag.</li>
+<li>Khi bạn hoàn tất, hãy nhấp vào <strong>Save Changes</strong>.</li>
+</ol>
+<p><img src="/WorkShopTwo/images/5.fwd/82.png" alt="Athena"></p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/5-labqueryandvisualize/" title="Lab: Query and Visualize"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/5-labqueryandvisualize/5.2-athenafederatedquery/" title="Athena Federated query" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1715586281"></script>
+    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
+    <script src="/js/jquery.sticky.js?1715586281"></script>
+    <script src="/js/featherlight.min.js?1715586281"></script>
+    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
+    <script src="/js/learn.js?1715586281"></script>
+    <script src="/js/hugo-learn.js?1715586281"></script>
+
+    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

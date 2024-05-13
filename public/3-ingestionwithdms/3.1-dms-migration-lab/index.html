@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="description" content="">
+<meta name="author" content="journeyoftheaverageguy@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title> Option1: DMS Migration Lab :: Getting Hands On with Amazon GuardDuty</title>
+
+    
+    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
+    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
+    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
+    <link href="/css/theme.css?1715586281" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/3-ingestionwithdms/3.1-dms-migration-lab/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1715586281"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-introduce/" title="Giới thiệu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-introduce/">
+           <b> 1. </b> Giới thiệu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/" title="Lab. Phát hiện luồng click chuột bất thường bằng Amazon Managed Service for Apache Flink" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/">
+           <b> 2 </b> Lab. Phát hiện luồng click chuột bất thường bằng Amazon Managed Service for Apache Flink
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.1-prepare/" title="Phát hiện luồng click chuột bất thường bằng Amazon Managed Service for Apache Flink" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.1-prepare/">
+           <b> 2.1 </b> Phát hiện luồng click chuột bất thường bằng Amazon Managed Service for Apache Flink
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.2-lab/" title="Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.2-lab/">
+           <b> 2.2 </b> Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.3-labetl/" title="Lab. Streaming ETL with Glue " class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.3-labetl/">
+           <b> 2.3 </b> Lab. Streaming ETL with Glue 
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.4-kinesis/" title="Real-time Streaming with Kinesis" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.4-kinesis/">
+           <b> 2.4 </b> Real-time Streaming with Kinesis
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-lab1/2.5-msk/" title="Clickstream Analytics using MSK" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-lab1/2.5-msk/">
+           <b> 2.5 </b> Clickstream Analytics using MSK
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-ingestionwithdms/" title="Nhập data với DMS" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/3-ingestionwithdms/">
+           <b> 3. </b> Nhập data với DMS
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-ingestionwithdms/3.1-dms-migration-lab/" title=" Option1: DMS Migration Lab" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/3-ingestionwithdms/3.1-dms-migration-lab/">
+           <b> 3.1. </b>  Option1: DMS Migration Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-ingestionwithdms/3.3-skip-dms-lab/" title="Option 2: AutoComplete DMS Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-ingestionwithdms/3.3-skip-dms-lab/">
+           <b> 3.2. </b> Option 2: AutoComplete DMS Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-ingestionwithdms/3.2-private-instance/" title="Option 3: Skip DMS Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-ingestionwithdms/3.2-private-instance/">
+           <b> 3.2. </b> Option 3: Skip DMS Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-transformingdatawithglue/" title="Lab: Transforming data with Glue" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-transformingdatawithglue/">
+           <b> 4. </b> Lab: Transforming data with Glue
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-transformingdatawithglue/4.1-datavalidationandetl/" title="Data Validation and ETL" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-transformingdatawithglue/4.1-datavalidationandetl/">
+           <b> 4.1 </b> Data Validation and ETL
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-transformingdatawithglue/4.2-hudi/" title="Incremental Data Processing with Hudi" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-transformingdatawithglue/4.2-hudi/">
+           <b> 4.2 </b> Incremental Data Processing with Hudi
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-labqueryandvisualize/" title="Lab: Query and Visualize" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-labqueryandvisualize/">
+           <b> 5. </b> Lab: Query and Visualize
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-labqueryandvisualize/5.1-athenaandquicksight/" title="Athena and QuickSight" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-labqueryandvisualize/5.1-athenaandquicksight/">
+           <b> 5.1 </b> Athena and QuickSight
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-labqueryandvisualize/5.2-athenafederatedquery/" title="Athena Federated query" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-labqueryandvisualize/5.2-athenafederatedquery/">
+           <b> 5.2 </b> Athena Federated query
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-labqueryandvisualize/5.3-athenaandsagemaker/" title="Athena and SageMaker" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-labqueryandvisualize/5.3-athenaandsagemaker/">
+           <b> 5.3 </b> Athena and SageMaker
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/" title="Lab: Data Lake Automation" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/">
+          <b>6. </b>Lab: Data Lake Automation
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/6.1-lakeformationlab/" title="Lake Formation Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/6.1-lakeformationlab/">
+           <b> 6.1 </b> Lake Formation Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/6.2-lakeformationlabforapachehuditables/" title="Lake Formation Lab for Apache Hudi Tables" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/6.2-lakeformationlabforapachehuditables/">
+           <b> 6.2 </b> Lake Formation Lab for Apache Hudi Tables
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/6.3-lakeformationlabforapacheicebergtables/" title="Lake Formation Lab for Apache Iceberg Tables" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/6.3-lakeformationlabforapacheicebergtables/">
+           <b> 6.3 </b> Lake Formation Lab for Apache Iceberg Tables
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-labdatalakeautomation/6.4-lakeformationlabordeltatables/" title="Lake Formation Lab for Delta Tables" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-labdatalakeautomation/6.4-lakeformationlabordeltatables/">
+           <b> 6.4 </b> Lake Formation Lab for Delta Tables
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-bonuslabgluedatabrew/" title="Bonus Lab: Glue DataBrew" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-bonuslabgluedatabrew/">
+          <b>7. </b>Bonus Lab: Glue DataBrew
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-bonuslabgluedatabrew/7.1-databrewpre-lab/" title="DataBrew Pre-Lab" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-bonuslabgluedatabrew/7.1-databrewpre-lab/">
+           <b> 7.1 </b> DataBrew Pre-Lab
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-bonuslabgluedatabrew/7.2-datapreparationwithgluedatabrew/" title="Data preparation with Glue DataBrew" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-bonuslabgluedatabrew/7.2-datapreparationwithgluedatabrew/">
+           <b> 7.2 </b> Data preparation with Glue DataBrew
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/8-clean/" title="Clean up" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/8-clean/">
+          <b>8. </b>Clean up
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="http://awsstudygroup.com"><i class='fab fa-aws'></i> AWS Study Group - Blog</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/660548818043427/"><i class='fab fa-facebook'></i> AWS Study Group - FB Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="/3-ingestionwithdms/3.1-dms-migration-lab/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>23-04-2024</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
+            <i> <a href="https://www.linkedin.com/in/nguy%E1%BB%85n-xu%C3%A2n-d%C6%B0%C6%A1ng-132936285/"  style="color:orange">Dương Nguyễn Xuân  </a> <br>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Data Engineering Immersion Day</a> > <a href='/3-ingestionwithdms/'>Nhập data với DMS</a> >  Option1: DMS Migration Lab
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#dms-migration-lab">DMS Migration Lab</a>
+      <ul>
+        <li><a href="#steps">Steps</a></li>
+        <li><a href="#giới-thiệu">Giới thiệu</a></li>
+        <li><a href="#tạo-subnet-group">Tạo Subnet group</a></li>
+        <li><a href="#tạo-replication-instance">Tạo Replication Instance</a></li>
+        <li><a href="#tạo-mds-source-endpoint">Tạo MDS Source Endpoint</a></li>
+        <li><a href="#tạo-target-endpoint">Tạo Target Endpoint</a></li>
+        <li><a href="#tạo-task-initial-full-copy">Tạo task initial full copy</a></li>
+        <li><a href="#tạo-cdc-endpoint-để-replicate-các-thay-đổi-diễn-ra">Tạo CDC endpoint để replicate các thay đổi diễn ra</a></li>
+        <li><a href="#tạo-task-replication-liên-tục">Tạo task replication liên tục.</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+               Option1: DMS Migration Lab
+            </h1>
+          
+
+        
+
+
+
+	<h2 id="dms-migration-lab">DMS Migration Lab</h2>
+<h3 id="steps">Steps</h3>
+<ol>
+<li>Giới thiệu</li>
+<li>Tạo Subnet Group</li>
+<li>Tạo Replication Instance</li>
+<li>Tạo DMS Source Endpoint</li>
+<li>Tạo Target Endpoint</li>
+<li>Tạo 1 task để bắt đầu full copy</li>
+<li>Tạo CDC endpoint để replicate thay đổi</li>
+<li>Tạo task để replicate liên tục</li>
+</ol>
+<h3 id="giới-thiệu">Giới thiệu</h3>
+<p>Bài lab này sẽ giúp bạn hiểu rõ hơn về  AWS Database Migration Service(AWS DMS). Bạn sẽ di chuyển dữ liệu từ cơ sở dữ liệu Amazon Relational Database Service (Amazon RDS) Postgres hiện có sang Amazon Simple Storage Service (Amazon S3) bucket.</p>
+<p><img src="/WorkShopTwo/images/3.connect/34.png" alt="DeployCF"></p>
+<p>Link GitHub của lab - <a href="https://github.com/aws-samples/data-engineering-for-aws-immersion-day">https://github.com/aws-samples/data-engineering-for-aws-immersion-day</a></p>
+<h3 id="tạo-subnet-group">Tạo Subnet group</h3>
+<ol>
+<li>Tại <a href="https://console.aws.amazon.com/dms/v2/home#createSubnetGroup"> DMS console </a>, chọn  Subnet Groups và Create subnet group.
+<img src="/WorkShopTwo/images/3.connect/35.png" alt="DeployCF"></li>
+</ol>
+<ul>
+<li>Tại Name textbox: dms-lab-subnet-grp</li>
+<li>Description textbox: Replication instance for production data system</li>
+<li>VPC: Chọn *-dmslstudv1</li>
+<li>Chọn subnets và click Add</li>
+</ul>
+<p><img src="/WorkShopTwo/images/3.connect/36.png" alt="DeployCF"></p>
+<ol start="2">
+<li>
+<p>Chọn Create subnet group</p>
+</li>
+<li>
+<p>Tại DMS console, subnet group displays <strong>Complete</strong>
+<img src="/WorkShopTwo/images/3.connect/37.png" alt="DeployCF"></p>
+</li>
+</ol>
+<h3 id="tạo-replication-instance">Tạo Replication Instance</h3>
+<ol>
+<li>Tại DMS console, chọn <a href="https://console.aws.amazon.com/dms/v2/home#createReplicationInstance"> Replication instances </a> để tạo  replication instance mới.
+<img src="/WorkShopTwo/images/3.connect/38.png" alt="DeployCF"></li>
+</ol>
+<ul>
+<li>
+<p>Name: DMS-Replication-Instance</p>
+</li>
+<li>
+<p>Description: DMS Replication Instance</p>
+</li>
+<li>
+<p>Instance class: dms.t3.medium</p>
+</li>
+<li>
+<p>Chọn engine version mới nhất</p>
+</li>
+<li>
+<p>High Availability: Dev or test workload (Single-AZ)</p>
+</li>
+<li>
+<p>VPC: dmslstudv1
+<img src="/WorkShopTwo/images/3.connect/39.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Chọn Advanced để mở rộng</p>
+</li>
+<li>
+<p>Chọn security group là sgdefault
+<img src="/WorkShopTwo/images/3.connect/40.png" alt="DeployCF"></p>
+</li>
+</ul>
+<ol start="2">
+<li>
+<p>Tất cả các trường còn lại mặc định</p>
+</li>
+<li>
+<p>DMS console hiển thị trạng thái tạo instance
+<img src="/WorkShopTwo/images/3.connect/41.png" alt="DeployCF"></p>
+</li>
+</ol>
+<h3 id="tạo-mds-source-endpoint">Tạo MDS Source Endpoint</h3>
+<ol>
+<li>Tại DMS console, chọn Endpoints để tạo source <a href="https://console.aws.amazon.com/dms/v2/home#createNewEndpoint">Endpoint</a>
+<img src="/WorkShopTwo/images/3.connect/42.png" alt="DeployCF"></li>
+</ol>
+<ul>
+<li>
+<p>Chọn Source Endpoint</p>
+</li>
+<li>
+<p>Endpoint identifier: rds-source-endpoint</p>
+</li>
+<li>
+<p>Source engine: PostgreSQL</p>
+</li>
+<li>
+<p>Access to Endpoint database: Provide access information manually</p>
+</li>
+<li>
+<p>Server name: RDS-Server-Name
+<img src="/WorkShopTwo/images/3.connect/43.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Port: 5432</p>
+</li>
+<li>
+<p>SSL mode: none</p>
+</li>
+<li>
+<p>User name: adminuser</p>
+</li>
+<li>
+<p>Password: admin123</p>
+</li>
+<li>
+<p>Database name: sportstickets</p>
+</li>
+</ul>
+<ol start="2">
+<li>Tất cả còn lại để mặc định, rồi click tạo endpoint. Khi sẵn sàng, trạng thái sẽ chuyển sang active</li>
+<li>Kiểm tra lại replication instance</li>
+</ol>
+<p><img src="/WorkShopTwo/images/3.connect/45.png" alt="DeployCF"></p>
+<ol start="4">
+<li>Chọn source endpoint và nhấn Test connection</li>
+</ol>
+<p><img src="/WorkShopTwo/images/3.connect/46.png" alt="DeployCF"></p>
+<ol start="5">
+<li>Click Run test. Nếu thành công sẽ có thông báo &ldquo;Connection tested successfully&rdquo; xuất hiện.</li>
+</ol>
+<p><img src="/WorkShopTwo/images/3.connect/47.png" alt="DeployCF"></p>
+<h3 id="tạo-target-endpoint">Tạo Target Endpoint</h3>
+<ol>
+<li>Tại DMS console, Chọn Endpoint để tạo target <a href="https://console.aws.amazon.com/dms/v2/home#createNewEndpoint">Endpoint</a>
+<img src="/WorkShopTwo/images/3.connect/48.png" alt="DeployCF"></li>
+</ol>
+<ul>
+<li>Endpoint type: Target endpoint</li>
+<li>Endpoint identifier: s3-target-endpoint</li>
+<li>Target engine: Amazon S3</li>
+<li>Service access role ARN: Copy và Past DMSLabRoleS3 ARN</li>
+<li>Bucket name: paste S3 Bucket Name</li>
+<li>Bucket folder: tickets</li>
+</ul>
+<p><img src="/WorkShopTwo/images/3.connect/49.png" alt="DeployCF"></p>
+<ul>
+<li>
+<p>Mở rộng phần: Endpoint settings</p>
+</li>
+<li>
+<p>Chọn Use endpoint connection checkbox, điền addColumnName=true trong Extra connection attributes box
+<img src="/WorkShopTwo/images/3.connect/50.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Mở rộng Test endpoint connection (optional). chọn VPC.</p>
+</li>
+<li>
+<p>Chọn Run test. Bước này kết nối với source database. Nếu thành công sẽ hiển thị thông báo &ldquo;Connection tested successfully&rdquo;
+<img src="/WorkShopTwo/images/3.connect/51.png" alt="DeployCF"></p>
+</li>
+</ul>
+<ol start="2">
+<li>Chọn Create Endpoint. Khi đã sẵn sàng, trạng thái endpoint sẽ chuyển thành active</li>
+</ol>
+<h3 id="tạo-task-initial-full-copy">Tạo task initial full copy</h3>
+<ol>
+<li>
+<p>Tại DMS console, chọn Database Migration Tasks.
+<img src="/WorkShopTwo/images/3.connect/52.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Chọn Create Task.</p>
+</li>
+</ol>
+<ul>
+<li>Task name: dms-full-dump-task</li>
+<li>Chọn Replication instance</li>
+<li>Chọn Source endpoint</li>
+<li>Chọn Target endpoint</li>
+<li>Migration type: Migrate existing data.</li>
+</ul>
+<p><img src="/WorkShopTwo/images/3.connect/53.png" alt="DeployCF"></p>
+<ul>
+<li>Mở rộng <strong>Task Settings</strong></li>
+<li>Chọn <strong>Turn on CloudWatch logs</strong> checkbox</li>
+</ul>
+<p><img src="/WorkShopTwo/images/3.connect/54.png" alt="DeployCF"></p>
+<ul>
+<li>Tại Table Mappings</li>
+<li>Chọn <strong>Add new selection rule</strong> và chọn <strong>Enter a Schema</strong> tại Schema field</li>
+<li>Tại <strong>Source name</strong>: dms_sample</li>
+<li>Để tất cả field còn lại mặc định.
+<img src="/WorkShopTwo/images/3.connect/55.png" alt="DeployCF"></li>
+</ul>
+<ol start="3">
+<li>
+<p>Chọn <strong>Create task</strong>. Task sẽ được tạo và tự động start</p>
+</li>
+<li>
+<p>Chọn task và xem chi tiết.
+<img src="/WorkShopTwo/images/3.connect/56.png" alt="DeployCF"></p>
+</li>
+</ol>
+<p><img src="/WorkShopTwo/images/3.connect/57.png" alt="DeployCF"></p>
+<ol start="5">
+<li>
+<p>Khi hoàn thành, task console hiển thị 100% progress
+<img src="/WorkShopTwo/images/3.connect/58.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Mở  S3 console và xem data được copy bởi DMS
+<img src="/WorkShopTwo/images/3.connect/59.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Review data bằng S3 select</p>
+</li>
+</ol>
+<p><img src="/WorkShopTwo/images/3.connect/60.png" alt="DeployCF"></p>
+<p><img src="/WorkShopTwo/images/3.connect/61.png" alt="DeployCF"></p>
+<p><img src="/WorkShopTwo/images/3.connect/62.png" alt="DeployCF"></p>
+<h3 id="tạo-cdc-endpoint-để-replicate-các-thay-đổi-diễn-ra">Tạo CDC endpoint để replicate các thay đổi diễn ra</h3>
+<ol>
+<li>
+<p>Tại DMS console, chọn <a href="https://console.aws.amazon.com/dms/v2/home#createNewEndpoint">Endpoints</a>
+<img src="/WorkShopTwo/images/3.connect/64.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Nhấn <strong>Create endpoint</strong></p>
+</li>
+</ol>
+<ul>
+<li>
+<p>Endpoint type: Target</p>
+</li>
+<li>
+<p>Endpoint identifier: rds-cdc-endpoint</p>
+</li>
+<li>
+<p>Target engine: Amazon S3</p>
+</li>
+<li>
+<p>Service Access Role ARN: DMSLabRoleS3</p>
+</li>
+<li>
+<p>Bucket name: Chọn S3 Bucketname</p>
+</li>
+<li>
+<p>Bucket folder: cdc
+<img src="/WorkShopTwo/images/3.connect/65.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Mở rộng phần <strong>Endpoint settings</strong></p>
+</li>
+<li>
+<p>Tích vào checkbox <strong>Use endpoint connection attributes</strong> và nhập addColumnName=true. Thuộc tính này bao gồm tên cột từ dữ liệu nguồn.
+<img src="/WorkShopTwo/images/3.connect/66.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Mở rộng phần <strong>Test endpoint connection (optional)</strong>, chọn VPC name.</p>
+</li>
+<li>
+<p>Click <strong>Run test</strong>. Nếu thành công sẽ hiển thị thông báo &ldquo;Connection tested successfully&rdquo;.</p>
+</li>
+</ul>
+<ol start="3">
+<li>
+<p>Chọn <strong>Create endpoint</strong>
+<img src="/WorkShopTwo/images/3.connect/67.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Khi sẵn sàng, endpoint status chuyển sang active.</p>
+</li>
+</ol>
+<p><img src="/WorkShopTwo/images/3.connect/68.png" alt="DeployCF"></p>
+<h3 id="tạo-task-replication-liên-tục">Tạo task replication liên tục.</h3>
+<ol>
+<li>Tại DMS console, chọn <strong>Database Migration Tasks</strong>
+<img src="/WorkShopTwo/images/3.connect/69.png" alt="DeployCF"></li>
+<li>Chọn <strong>Create Task</strong></li>
+</ol>
+<ul>
+<li>Task Identifier: cdctask</li>
+<li>Chọn Replication instance</li>
+<li>Chọn Source endpoint</li>
+<li>Chọn Target endpoint: rds-cdc-endpoint</li>
+<li>Chọn Migration type: <strong>Replicate data changes only.</strong></li>
+</ul>
+<p><img src="/WorkShopTwo/images/3.connect/70.png" alt="DeployCF"></p>
+<ul>
+<li>Trong <strong>Task Settings</strong>, Chọn <strong>Turn on CloudWatch logs</strong> checkbox</li>
+</ul>
+<p><img src="/WorkShopTwo/images/3.connect/71.png" alt="DeployCF"></p>
+<ul>
+<li>
+<p>Chuyển đến <strong>Table Mappings</strong></p>
+</li>
+<li>
+<p>Chọn ** Add new selection rule ** và Chọn <strong>Enter a Schema</strong> tại Schema field</p>
+</li>
+<li>
+<p>Tại <strong>Source name</strong>, chọn dms_sample. Tất cả còn lại để mặc định
+<img src="/WorkShopTwo/images/3.connect/72.png" alt="DeployCF"></p>
+</li>
+</ul>
+<ol start="3">
+<li>
+<p>Chọn Create task. Task sẽ được tạo và tự động chạy. Chúng ta có thể thấy trạng thái là Replication ongoing.
+<img src="/WorkShopTwo/images/3.connect/73.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Đợi 5 đến 10 phút để CDC data ánh xạ RDS postgres database</p>
+</li>
+<li>
+<p>Chọn CDC task để xem chi tiết, xem phần <strong>Table statistics</strong>:
+<img src="/WorkShopTwo/images/3.connect/74.png" alt="DeployCF"></p>
+</li>
+<li>
+<p>Mở S3 console và xem CDC data được copied từ DMS</p>
+</li>
+</ol>
+<p><img src="/WorkShopTwo/images/3.connect/75.png" alt="DeployCF"></p>
+<ol start="7">
+<li>Chọn 1 file và sử dụng <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/selecting-content-from-objects.html"> S3 Select </a></li>
+</ol>
+<p><img src="/WorkShopTwo/images/3.connect/76.png" alt="DeployCF"></p>
+<p><img src="/WorkShopTwo/images/3.connect/77.png" alt="DeployCF"></p>
+<p><img src="/WorkShopTwo/images/3.connect/78.png" alt="DeployCF"></p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/3-ingestionwithdms/" title="Nhập data với DMS"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/3-ingestionwithdms/3.3-skip-dms-lab/" title="Option 2: AutoComplete DMS Lab" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1715586281"></script>
+    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
+    <script src="/js/jquery.sticky.js?1715586281"></script>
+    <script src="/js/featherlight.min.js?1715586281"></script>
+    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
+    <script src="/js/learn.js?1715586281"></script>
+    <script src="/js/hugo-learn.js?1715586281"></script>
+
+    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

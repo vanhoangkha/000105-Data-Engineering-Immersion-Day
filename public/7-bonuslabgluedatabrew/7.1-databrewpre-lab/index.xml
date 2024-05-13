@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DataBrew Pre-Lab on Getting Hands On with Amazon GuardDuty</title>
+    <link>/7-bonuslabgluedatabrew/7.1-databrewpre-lab/</link>
+    <description>Recent content in DataBrew Pre-Lab on Getting Hands On with Amazon GuardDuty</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="/7-bonuslabgluedatabrew/7.1-databrewpre-lab/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
