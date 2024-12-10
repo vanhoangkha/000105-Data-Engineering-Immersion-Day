@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title> Option1: DMS Migration Lab :: Getting Hands On with Amazon GuardDuty</title>
 
     
-    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
-    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
-    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
-    <link href="/css/theme.css?1715586281" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    <link href="/css/nucleus.css?1733820671" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733820671" rel="stylesheet">
+    <link href="/css/hybrid.css?1733820671" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733820671" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733820671" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733820671" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733820671" rel="stylesheet">
+    <link href="/css/theme.css?1733820671" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733820671" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733820671" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733820671"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733820671"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733820671"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1715586281"></script>
+<script type="text/javascript" src="/js/search.js?1733820671"></script>
 
     
   </div>
@@ -965,7 +965,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>23-04-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1085,12 +1085,12 @@
 </ol>
 <h3 id="giới-thiệu">Giới thiệu</h3>
 <p>Bài lab này sẽ giúp bạn hiểu rõ hơn về  AWS Database Migration Service(AWS DMS). Bạn sẽ di chuyển dữ liệu từ cơ sở dữ liệu Amazon Relational Database Service (Amazon RDS) Postgres hiện có sang Amazon Simple Storage Service (Amazon S3) bucket.</p>
-<p><img src="/WorkShopTwo/images/3.connect/34.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/34.png"></p>
 <p>Link GitHub của lab - <a href="https://github.com/aws-samples/data-engineering-for-aws-immersion-day">https://github.com/aws-samples/data-engineering-for-aws-immersion-day</a></p>
 <h3 id="tạo-subnet-group">Tạo Subnet group</h3>
 <ol>
 <li>Tại <a href="https://console.aws.amazon.com/dms/v2/home#createSubnetGroup"> DMS console </a>, chọn  Subnet Groups và Create subnet group.
-<img src="/WorkShopTwo/images/3.connect/35.png" alt="DeployCF"></li>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/35.png"></li>
 </ol>
 <ul>
 <li>Tại Name textbox: dms-lab-subnet-grp</li>
@@ -1098,20 +1098,20 @@
 <li>VPC: Chọn *-dmslstudv1</li>
 <li>Chọn subnets và click Add</li>
 </ul>
-<p><img src="/WorkShopTwo/images/3.connect/36.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/36.png"></p>
 <ol start="2">
 <li>
 <p>Chọn Create subnet group</p>
 </li>
 <li>
 <p>Tại DMS console, subnet group displays <strong>Complete</strong>
-<img src="/WorkShopTwo/images/3.connect/37.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/37.png"></p>
 </li>
 </ol>
 <h3 id="tạo-replication-instance">Tạo Replication Instance</h3>
 <ol>
 <li>Tại DMS console, chọn <a href="https://console.aws.amazon.com/dms/v2/home#createReplicationInstance"> Replication instances </a> để tạo  replication instance mới.
-<img src="/WorkShopTwo/images/3.connect/38.png" alt="DeployCF"></li>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/38.png"></li>
 </ol>
 <ul>
 <li>
@@ -1131,14 +1131,14 @@
 </li>
 <li>
 <p>VPC: dmslstudv1
-<img src="/WorkShopTwo/images/3.connect/39.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/39.png"></p>
 </li>
 <li>
 <p>Chọn Advanced để mở rộng</p>
 </li>
 <li>
 <p>Chọn security group là sgdefault
-<img src="/WorkShopTwo/images/3.connect/40.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/40.png"></p>
 </li>
 </ul>
 <ol start="2">
@@ -1147,13 +1147,13 @@
 </li>
 <li>
 <p>DMS console hiển thị trạng thái tạo instance
-<img src="/WorkShopTwo/images/3.connect/41.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/41.png"></p>
 </li>
 </ol>
 <h3 id="tạo-mds-source-endpoint">Tạo MDS Source Endpoint</h3>
 <ol>
 <li>Tại DMS console, chọn Endpoints để tạo source <a href="https://console.aws.amazon.com/dms/v2/home#createNewEndpoint">Endpoint</a>
-<img src="/WorkShopTwo/images/3.connect/42.png" alt="DeployCF"></li>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/42.png"></li>
 </ol>
 <ul>
 <li>
@@ -1170,7 +1170,7 @@
 </li>
 <li>
 <p>Server name: RDS-Server-Name
-<img src="/WorkShopTwo/images/3.connect/43.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/43.png"></p>
 </li>
 <li>
 <p>Port: 5432</p>
@@ -1192,19 +1192,19 @@
 <li>Tất cả còn lại để mặc định, rồi click tạo endpoint. Khi sẵn sàng, trạng thái sẽ chuyển sang active</li>
 <li>Kiểm tra lại replication instance</li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/45.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/45.png"></p>
 <ol start="4">
 <li>Chọn source endpoint và nhấn Test connection</li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/46.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/46.png"></p>
 <ol start="5">
 <li>Click Run test. Nếu thành công sẽ có thông báo &ldquo;Connection tested successfully&rdquo; xuất hiện.</li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/47.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/47.png"></p>
 <h3 id="tạo-target-endpoint">Tạo Target Endpoint</h3>
 <ol>
 <li>Tại DMS console, Chọn Endpoint để tạo target <a href="https://console.aws.amazon.com/dms/v2/home#createNewEndpoint">Endpoint</a>
-<img src="/WorkShopTwo/images/3.connect/48.png" alt="DeployCF"></li>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/48.png"></li>
 </ol>
 <ul>
 <li>Endpoint type: Target endpoint</li>
@@ -1214,21 +1214,21 @@
 <li>Bucket name: paste S3 Bucket Name</li>
 <li>Bucket folder: tickets</li>
 </ul>
-<p><img src="/WorkShopTwo/images/3.connect/49.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/49.png"></p>
 <ul>
 <li>
 <p>Mở rộng phần: Endpoint settings</p>
 </li>
 <li>
 <p>Chọn Use endpoint connection checkbox, điền addColumnName=true trong Extra connection attributes box
-<img src="/WorkShopTwo/images/3.connect/50.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/50.png"></p>
 </li>
 <li>
 <p>Mở rộng Test endpoint connection (optional). chọn VPC.</p>
 </li>
 <li>
 <p>Chọn Run test. Bước này kết nối với source database. Nếu thành công sẽ hiển thị thông báo &ldquo;Connection tested successfully&rdquo;
-<img src="/WorkShopTwo/images/3.connect/51.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/51.png"></p>
 </li>
 </ul>
 <ol start="2">
@@ -1238,7 +1238,7 @@
 <ol>
 <li>
 <p>Tại DMS console, chọn Database Migration Tasks.
-<img src="/WorkShopTwo/images/3.connect/52.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/52.png"></p>
 </li>
 <li>
 <p>Chọn Create Task.</p>
@@ -1251,18 +1251,18 @@
 <li>Chọn Target endpoint</li>
 <li>Migration type: Migrate existing data.</li>
 </ul>
-<p><img src="/WorkShopTwo/images/3.connect/53.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/53.png"></p>
 <ul>
 <li>Mở rộng <strong>Task Settings</strong></li>
 <li>Chọn <strong>Turn on CloudWatch logs</strong> checkbox</li>
 </ul>
-<p><img src="/WorkShopTwo/images/3.connect/54.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/54.png"></p>
 <ul>
 <li>Tại Table Mappings</li>
 <li>Chọn <strong>Add new selection rule</strong> và chọn <strong>Enter a Schema</strong> tại Schema field</li>
 <li>Tại <strong>Source name</strong>: dms_sample</li>
 <li>Để tất cả field còn lại mặc định.
-<img src="/WorkShopTwo/images/3.connect/55.png" alt="DeployCF"></li>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/55.png"></li>
 </ul>
 <ol start="3">
 <li>
@@ -1270,31 +1270,31 @@
 </li>
 <li>
 <p>Chọn task và xem chi tiết.
-<img src="/WorkShopTwo/images/3.connect/56.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/56.png"></p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/57.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/57.png"></p>
 <ol start="5">
 <li>
 <p>Khi hoàn thành, task console hiển thị 100% progress
-<img src="/WorkShopTwo/images/3.connect/58.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/58.png"></p>
 </li>
 <li>
 <p>Mở  S3 console và xem data được copy bởi DMS
-<img src="/WorkShopTwo/images/3.connect/59.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/59.png"></p>
 </li>
 <li>
 <p>Review data bằng S3 select</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/60.png" alt="DeployCF"></p>
-<p><img src="/WorkShopTwo/images/3.connect/61.png" alt="DeployCF"></p>
-<p><img src="/WorkShopTwo/images/3.connect/62.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/60.png"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/61.png"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/62.png"></p>
 <h3 id="tạo-cdc-endpoint-để-replicate-các-thay-đổi-diễn-ra">Tạo CDC endpoint để replicate các thay đổi diễn ra</h3>
 <ol>
 <li>
 <p>Tại DMS console, chọn <a href="https://console.aws.amazon.com/dms/v2/home#createNewEndpoint">Endpoints</a>
-<img src="/WorkShopTwo/images/3.connect/64.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/64.png"></p>
 </li>
 <li>
 <p>Nhấn <strong>Create endpoint</strong></p>
@@ -1318,14 +1318,14 @@
 </li>
 <li>
 <p>Bucket folder: cdc
-<img src="/WorkShopTwo/images/3.connect/65.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/65.png"></p>
 </li>
 <li>
 <p>Mở rộng phần <strong>Endpoint settings</strong></p>
 </li>
 <li>
 <p>Tích vào checkbox <strong>Use endpoint connection attributes</strong> và nhập addColumnName=true. Thuộc tính này bao gồm tên cột từ dữ liệu nguồn.
-<img src="/WorkShopTwo/images/3.connect/66.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/66.png"></p>
 </li>
 <li>
 <p>Mở rộng phần <strong>Test endpoint connection (optional)</strong>, chọn VPC name.</p>
@@ -1337,17 +1337,17 @@
 <ol start="3">
 <li>
 <p>Chọn <strong>Create endpoint</strong>
-<img src="/WorkShopTwo/images/3.connect/67.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/67.png"></p>
 </li>
 <li>
 <p>Khi sẵn sàng, endpoint status chuyển sang active.</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/68.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/68.png"></p>
 <h3 id="tạo-task-replication-liên-tục">Tạo task replication liên tục.</h3>
 <ol>
 <li>Tại DMS console, chọn <strong>Database Migration Tasks</strong>
-<img src="/WorkShopTwo/images/3.connect/69.png" alt="DeployCF"></li>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/69.png"></li>
 <li>Chọn <strong>Create Task</strong></li>
 </ol>
 <ul>
@@ -1357,11 +1357,11 @@
 <li>Chọn Target endpoint: rds-cdc-endpoint</li>
 <li>Chọn Migration type: <strong>Replicate data changes only.</strong></li>
 </ul>
-<p><img src="/WorkShopTwo/images/3.connect/70.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/70.png"></p>
 <ul>
 <li>Trong <strong>Task Settings</strong>, Chọn <strong>Turn on CloudWatch logs</strong> checkbox</li>
 </ul>
-<p><img src="/WorkShopTwo/images/3.connect/71.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/71.png"></p>
 <ul>
 <li>
 <p>Chuyển đến <strong>Table Mappings</strong></p>
@@ -1371,32 +1371,32 @@
 </li>
 <li>
 <p>Tại <strong>Source name</strong>, chọn dms_sample. Tất cả còn lại để mặc định
-<img src="/WorkShopTwo/images/3.connect/72.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/72.png"></p>
 </li>
 </ul>
 <ol start="3">
 <li>
 <p>Chọn Create task. Task sẽ được tạo và tự động chạy. Chúng ta có thể thấy trạng thái là Replication ongoing.
-<img src="/WorkShopTwo/images/3.connect/73.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/73.png"></p>
 </li>
 <li>
 <p>Đợi 5 đến 10 phút để CDC data ánh xạ RDS postgres database</p>
 </li>
 <li>
 <p>Chọn CDC task để xem chi tiết, xem phần <strong>Table statistics</strong>:
-<img src="/WorkShopTwo/images/3.connect/74.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/74.png"></p>
 </li>
 <li>
 <p>Mở S3 console và xem CDC data được copied từ DMS</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/75.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/75.png"></p>
 <ol start="7">
 <li>Chọn 1 file và sử dụng <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/selecting-content-from-objects.html"> S3 Select </a></li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/76.png" alt="DeployCF"></p>
-<p><img src="/WorkShopTwo/images/3.connect/77.png" alt="DeployCF"></p>
-<p><img src="/WorkShopTwo/images/3.connect/78.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/76.png"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/77.png"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/78.png"></p>
 
 
 
@@ -1906,19 +1906,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
-    <script src="/js/jquery.sticky.js?1715586281"></script>
-    <script src="/js/featherlight.min.js?1715586281"></script>
-    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script src="/js/clipboard.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733820671"></script>
+    <script src="/js/jquery.sticky.js?1733820671"></script>
+    <script src="/js/featherlight.min.js?1733820671"></script>
+    <script src="/js/highlight.pack.js?1733820671"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
-    <script src="/js/learn.js?1715586281"></script>
-    <script src="/js/hugo-learn.js?1715586281"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733820671"></script>
+    <script src="/js/learn.js?1733820671"></script>
+    <script src="/js/hugo-learn.js?1733820671"></script>
 
-    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <link href="/mermaid/mermaid.css?1733820671" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733820671"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

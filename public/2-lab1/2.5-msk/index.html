@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Clickstream Analytics using MSK :: Getting Hands On with Amazon GuardDuty</title>
 
     
-    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
-    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
-    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
-    <link href="/css/theme.css?1715586281" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    <link href="/css/nucleus.css?1733820671" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733820671" rel="stylesheet">
+    <link href="/css/hybrid.css?1733820671" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733820671" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733820671" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733820671" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733820671" rel="stylesheet">
+    <link href="/css/theme.css?1733820671" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733820671" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733820671" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733820671"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733820671"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733820671"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1715586281"></script>
+<script type="text/javascript" src="/js/search.js?1733820671"></script>
 
     
   </div>
@@ -965,7 +965,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>23-04-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1066,11 +1066,11 @@
 	<h3 id="clickstream-analytics-using-msk">Clickstream Analytics using MSK</h3>
 <p>Trong workshop này, mục tiêu chung của chúng ta là trực quan hóa và phân tích hiệu suất của các sản phẩm khác nhau trong trang web thương mại điện tử bằng cách nhập, chuyển đổi và phân tích dữ liệu luồng nhấp chuột theo thời gian thực bằng cách sử dụng dịch vụ AWS cho Apache Kafka (Amazon MSK), Apache Flink (Dữ liệu Kinesis Analytics cho các ứng dụng Java) và Elaticsearch (Amazon Elaticsearch). <a href="https://amazonmsk-labs.workshop.aws/en/mskkdaflinklab/overview.html">Clickstream Analytics using MSK</a>  để tìm hiểu thêm.</p>
 <p>Kiến trúc cấp cao sẽ trông như thế này:</p>
-<p><img src="/WorkShopTwo/images/3.connect/32.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/32.png"></p>
 <p>Trước tiên, chúng ta sẽ sử dụng trình tạo dữ liệu để tạo thông báo Clickstream tới một topic (ExampleTopic) trong cụm Amazon MSK lưu trữ Apache kafka. Sau đó, chúng ta sẽ cấu hình và khởi động Kinesis Data Analytics cho Ứng dụng Java bằng cách sử dụng công cụ Apache Flink, một dịch vụ Apache Flink được quản lý từ AWS. Công cụ này sẽ đọc các sự kiện từ chủ đề exampleTopic trong Amazon MSK, xử lý và tổng hợp nó, sau đó gửi các sự kiện tổng hợp ( Analytics) cho cả hai topic trong Amazon MSK và Amazon Elasticsearch. Sau đó, chúng tôi sẽ sử dụng các thông báo đó từ Amazon MSK để minh họa cách người tiêu dùng có thể nhận được phân tích luồng nhấp chuột theo thời gian thực. Ngoài ra, chúng tôi sẽ tạo trực quan hóa Kibana và bảng điều khiển Kibana để trực quan hóa phân tích luồng nhấp chuột theo thời gian thực.</p>
 <p>Chúng tôi sẽ cung cấp các tài nguyên cần thiết cho bài lab thông qua CloudFormation.</p>
 <p>Template sẽ trông như sau:
-<img src="/WorkShopTwo/images/3.connect/33.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/33.png"></p>
 <p>The stack sẽ gồm:</p>
 <ul>
 <li>A VPC với 1 Public subnet và 3 Private subnets</li>
@@ -1594,19 +1594,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
-    <script src="/js/jquery.sticky.js?1715586281"></script>
-    <script src="/js/featherlight.min.js?1715586281"></script>
-    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script src="/js/clipboard.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733820671"></script>
+    <script src="/js/jquery.sticky.js?1733820671"></script>
+    <script src="/js/featherlight.min.js?1733820671"></script>
+    <script src="/js/highlight.pack.js?1733820671"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
-    <script src="/js/learn.js?1715586281"></script>
-    <script src="/js/hugo-learn.js?1715586281"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733820671"></script>
+    <script src="/js/learn.js?1733820671"></script>
+    <script src="/js/hugo-learn.js?1733820671"></script>
 
-    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <link href="/mermaid/mermaid.css?1733820671" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733820671"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

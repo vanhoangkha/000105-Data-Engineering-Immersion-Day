@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Lab. Streaming ETL with Glue  :: Getting Hands On with Amazon GuardDuty</title>
 
     
-    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
-    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
-    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
-    <link href="/css/theme.css?1715586281" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    <link href="/css/nucleus.css?1733820671" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733820671" rel="stylesheet">
+    <link href="/css/hybrid.css?1733820671" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733820671" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733820671" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733820671" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733820671" rel="stylesheet">
+    <link href="/css/theme.css?1733820671" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733820671" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733820671" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733820671"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733820671"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733820671"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1715586281"></script>
+<script type="text/javascript" src="/js/search.js?1733820671"></script>
 
     
   </div>
@@ -965,7 +965,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>23-04-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1073,7 +1073,7 @@
 
 	<h3 id="giới-thiệu">Giới thiệu</h3>
 <p>Trong bài lab này, ta sẽ tìm hiểu cách nhập, xử lý và sử dụng streaming data  bằng các dịch vụ serverless của AWS như Kinesis Data Streams, Glue, S3 và Athena. Để mô phỏng đầu vào truyền dữ liệu, chúng tôi sẽ sử dụng Kinesis Data Generator (KDG).</p>
-<p><img src="/WorkShopTwo/images/3.connect/1.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/1.png"></p>
 <h3 id="setup-môi-trường">Setup môi trường</h3>
 <p>Sử dụng <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/976050cc-0606-4b23-b49f-ca7b8ac4b153/en-US/400/401/420-pre-lab-2.html">DMS Lab Student PreLab CloudFormation</a> để thiết lập môi trường cơ sở hạ tầng hội thảo cốt lõi của bạn. Bỏ qua PreLab tương tự trong phần DMS. Nhấp vào biểu tượng Triển khai lên AWS bên dưới:</p>
 
@@ -1089,7 +1089,7 @@
 <ol>
 <li>Mở <a href="https://console.aws.amazon.com/kinesis/home">AWS Kinesis console</a></li>
 <li>Chọn “Create data stream”
-<img src="/WorkShopTwo/images/3.connect/2.png" alt="DeployCF"></li>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/2.png"></li>
 <li>Nhập số liệu như sau:</li>
 </ol>
 <ul>
@@ -1097,7 +1097,7 @@
 <li>Capacity mode: Provisioned</li>
 <li>Provisioned shards: 2</li>
 </ul>
-<p><img src="/WorkShopTwo/images/3.connect/3.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/3.png"></p>
 <ol start="4">
 <li>Chọn Create data stream</li>
 </ol>
@@ -1108,42 +1108,42 @@
 </li>
 <li>
 <p>Tạo database có tên là &ldquo;tickettransactiondatabase&rdquo;
-<img src="/WorkShopTwo/images/3.connect/4.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/4.png"></p>
 </li>
 <li>
 <p>Tạo tables có tên là &ldquo;TicketTransactionStreamData&rdquo; ở trong database &ldquo;tickettransactiondatabase&rdquo;
-<img src="/WorkShopTwo/images/3.connect/6.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/6.png"></p>
 </li>
 <li>
 <p>Chọn Kinesis làm nguồn, chọn Luồng trong my account để chọn luồng dữ liệu Kinesis, chọn khu vực AWS thích hợp nơi bạn đã tạo luồng, chọn tên luồng là TicketTransactionStreamingData từ danh sách thả xuống, chọn JSON làm định dạng dữ liệu đến, vì chúng ta sẽ gửi JSON payloads từ Kinesis Data Generator theo các bước sau. và nhấp vào Tiếp theo.
-<img src="/WorkShopTwo/images/3.connect/5.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/5.png"></p>
 </li>
 <li>
 <p>Để trống schema vì chúng ta sẽ bật tính năng schema detection. Để trống partition indices. Chọn Next
-<img src="/WorkShopTwo/images/3.connect/7.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/7.png"></p>
 </li>
 <li>
 <p>Review lại tất cả thông tin và nhấn Create</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/8.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/8.png"></p>
 <ol start="7">
 <li>Chọn vào Table để xem các thuộc tính</li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/9.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/9.png"></p>
 <h3 id="tạo-và-trigger-glue-streaming-job">Tạo và trigger Glue Streaming job</h3>
 <ol>
 <li>Tại mục Data Integration and ETL chọn Glue Studio</li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/10.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/10.png"></p>
 <ol start="2">
 <li>
 <p>Chọn Visual with a blank canvas và nhấn Create
-<img src="/WorkShopTwo/images/3.connect/11.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/11.png"></p>
 </li>
 <li>
 <p>Chọn Amazon Kinesis từ Source drop down
-<img src="/WorkShopTwo/images/3.connect/12.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/12.png"></p>
 </li>
 <li>
 <p>Trong bảng bên phải phía dưới “Data source properties - Kinesis Stream”, cấu hình như sau:</p>
@@ -1156,11 +1156,11 @@
 <li>Đảm bảo rằng Detect schema được chọn</li>
 <li>Để tất cả còn lại mặc định</li>
 </ul>
-<p><img src="/WorkShopTwo/images/3.connect/13.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/13.png"></p>
 <ol start="5">
 <li>Chọn Amazon S3 từ target drop down list</li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/14.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/14.png"></p>
 <ol start="6">
 <li>Chọn <strong>Data target - S3 bucket</strong> và cấu hình như sau:</li>
 </ol>
@@ -1168,7 +1168,7 @@
 <li>Format: Parquet</li>
 <li>Compression Type: None</li>
 <li>S3 Target Location: Select Browse S3 and select the “mod-xxx-dmslabs3bucket-xxx” bucket
-<img src="/WorkShopTwo/images/3.connect/15.png" alt="DeployCF"></li>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/15.png"></li>
 </ul>
 <ol start="7">
 <li>Cuối cùng chọn <strong>Job details</strong> tab và cấu hình theo như sau:</li>
@@ -1207,7 +1207,7 @@
     )}}&#34;,
    &#34;transactionTime&#34;: &#34;{{date.now}}&#34;      
 }
-</code></pre><p><img src="/WorkShopTwo/images/3.connect/16.png" alt="DeployCF"></p>
+</code></pre><p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/16.png"></p>
 <ol start="3">
 <li>Click <strong>Send data</strong> để trigger transaction streaming data.</li>
 </ol>
@@ -1220,60 +1220,60 @@
 <p>Tại AWS Glue menu, chọn Crawlers and click Add crawler</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/17.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/17.png"></p>
 <ol start="3">
 <li>Nhập tên crawler là  TicketTransactionParquetDataCrawler, nhấn Next</li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/18.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/18.png"></p>
 <ol start="4">
 <li>
 <p>Click vào Add a datasource
-<img src="/WorkShopTwo/images/3.connect/19.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/19.png"></p>
 </li>
 <li>
 <p>Chọn S3 và chỉ định path
-<img src="/WorkShopTwo/images/3.connect/20.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/20.png"></p>
 </li>
 <li>
 <p>Sau khi thêm datasource, nhấn next</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/21.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/21.png"></p>
 <ol start="7">
 <li>Chọn IAM Role và nhấn Next</li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/22.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/22.png"></p>
 <ol start="8">
 <li>Chọn prefix là parquet_ cho tables</li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/23.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/23.png"></p>
 <ol start="9">
 <li>
 <p>Đăt Crawler Schedule chạy mỗi giờ.
-<img src="/WorkShopTwo/images/3.connect/24.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/24.png"></p>
 </li>
 <li>
 <p>Review lại  Crawler và Click Create để tạo Crawler
-<img src="/WorkShopTwo/images/3.connect/25.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/25.png"></p>
 </li>
 <li>
 <p>Sau khi Crawler tạo xong. Nhấn Run crawler để trigger lần đầu.</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/26.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/26.png"></p>
 <ol start="12">
 <li>Khi crawler job stop, chuyển đến Glue Data catalog. Đảm bảo rằng parquet_tickettransactionstreamingdata table xuất hiện</li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/27.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/27.png"></p>
 <ol start="13">
 <li>Click vào parquet_tickettransactionstreamingdata table để xem chi tiết
-<img src="/WorkShopTwo/images/3.connect/28.png" alt="DeployCF"></li>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/28.png"></li>
 </ol>
 <h3 id="trigger-dữ-liệu-bất-thường-từ-kinesis-data-generatorkdg">Trigger dữ liệu bất thường từ Kinesis Data Generator(KDG)</h3>
 <ol>
 <li>
 <p>Mở Kinesis Data Generator, chọn đúng region. Chọn TicketTransactionStreamingData là Kinesis stream đích
-<img src="/WorkShopTwo/images/3.connect/29.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/29.png"></p>
 </li>
 <li>
 <p>Template cho record</p>
@@ -1295,7 +1295,7 @@
     )}}&#34;,
    &#34;transactionTime&#34;: &#34;{{date.now}}&#34;      
 }
-</code></pre><p><img src="/WorkShopTwo/images/3.connect/30.png" alt="DeployCF"></p>
+</code></pre><p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/30.png"></p>
 <ol start="3">
 <li>Click send data</li>
 </ol>
@@ -1306,7 +1306,7 @@
 </li>
 <li>
 <p>Chọn AwsDataCatalog làm data source và tickettransactiondatabase là database
-<img src="/WorkShopTwo/images/3.connect/31.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/31.png"></p>
 </li>
 <li>
 <p>Sử dụng các truy vấn sau để xem dữ liệu</p>
@@ -1833,19 +1833,19 @@ Order by numberOfTransactions DESC;
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
-    <script src="/js/jquery.sticky.js?1715586281"></script>
-    <script src="/js/featherlight.min.js?1715586281"></script>
-    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script src="/js/clipboard.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733820671"></script>
+    <script src="/js/jquery.sticky.js?1733820671"></script>
+    <script src="/js/featherlight.min.js?1733820671"></script>
+    <script src="/js/highlight.pack.js?1733820671"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
-    <script src="/js/learn.js?1715586281"></script>
-    <script src="/js/hugo-learn.js?1715586281"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733820671"></script>
+    <script src="/js/learn.js?1733820671"></script>
+    <script src="/js/hugo-learn.js?1733820671"></script>
 
-    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <link href="/mermaid/mermaid.css?1733820671" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733820671"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

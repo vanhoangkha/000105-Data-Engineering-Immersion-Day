@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Incremental Data Processing with Hudi :: Getting Hands On with Amazon GuardDuty</title>
 
     
-    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
-    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
-    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
-    <link href="/css/theme.css?1715586281" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    <link href="/css/nucleus.css?1733820671" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733820671" rel="stylesheet">
+    <link href="/css/hybrid.css?1733820671" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733820671" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733820671" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733820671" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733820671" rel="stylesheet">
+    <link href="/css/theme.css?1733820671" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733820671" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733820671" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733820671"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733820671"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733820671"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1715586281"></script>
+<script type="text/javascript" src="/js/search.js?1733820671"></script>
 
     
   </div>
@@ -965,7 +965,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>23-04-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1097,26 +1097,26 @@
 <h3 id="step-0---prerequisites">Step 0 - Prerequisites</h3>
 <ol>
 <li>
-<p>Hoàn thành  <a href="../../3-IngestionwithDMS/3.1-DMS-Migration-Lab/_index.md">Main Lab</a> or <a href="../../3-IngestionwithDMS/3.2-Private-instance/_index.md">Autocomplete DMS Lab</a></p>
+<p>Hoàn thành  <a href="/3-ingestionwithdms/3.1-dms-migration-lab/">Main Lab</a> or <a href="/3-ingestionwithdms/3.2-private-instance/">Autocomplete DMS Lab</a></p>
 </li>
 <li>
 <p>Source RDS database và trạng thái cdctask là ‘Replication ongoing’
-<img src="/WorkShopTwo/images/4.s3/41.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/41.png"></p>
 </li>
 <li>
 <p>Tên của S3 bucket trong s3-target-endpoint DMS
-<img src="/WorkShopTwo/images/4.s3/42.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/42.png"></p>
 </li>
 </ol>
 <h3 id="step-1---tạo-glue-job-và-hudi-tables">Step 1 - Tạo Glue job và HUDI tables</h3>
 <ol>
 <li>Truy cập <strong>AWS Glue Console</strong> và chọn Jobs</li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/43.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/43.png"></p>
 <ol start="2">
 <li>
 <p>Chọn <strong>Spark script editor</strong>, nhấn <strong>Create a new script with boilerplate code</strong> option và click <strong>Create</strong>
-<img src="/WorkShopTwo/images/4.s3/44.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/44.png"></p>
 </li>
 <li>
 <p>Copy đoạn code sau và past vào Glue script editor</p>
@@ -1393,7 +1393,7 @@ job.commit()
 </li>
 <li>
 <p>Đợi tới khi Succeeded
-<img src="/WorkShopTwo/images/4.s3/45.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/45.png"></p>
 </li>
 <li>
 <p>Glue job sẽ tạo HUDI tables ticket_purchase_hist</p>
@@ -1406,7 +1406,7 @@ job.commit()
 </li>
 <li>
 <p>Bạn sẽ thấy new tables là ticket_purchase_hist và database là hudi_sample
-<img src="/WorkShopTwo/images/4.s3/46.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/46.png"></p>
 </li>
 <li>
 <p>Truy cập Amazon Athena Console và chọn hudi_sample Database</p>
@@ -1415,17 +1415,17 @@ job.commit()
 <p>Setup nơi lưu kết quả.</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/47.png" alt="DeployCF"></p>
-<p><img src="/WorkShopTwo/images/4.s3/48.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/47.png"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/48.png"></p>
 <ol start="5">
 <li>Chọn ellipsis và <strong>Preview table</strong>, ticket_purchase_hist</li>
 <li>Count ticket_purchase_hist bằng cách chạy query sau</li>
 </ol>
 <pre tabindex="0"><code>select count(1) from hudi_sample.ticket_purchase_hist
-</code></pre><p><img src="/WorkShopTwo/images/4.s3/49.png" alt="DeployCF"></p>
+</code></pre><p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/49.png"></p>
 <ol start="7">
 <li>Kết quả HUDI tables
-<img src="/WorkShopTwo/images/4.s3/50.png" alt="DeployCF"></li>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/50.png"></li>
 </ol>
 <h3 id="step-3--hudi-hudi-configurations">Step 3 – HUDI HUDI configurations</h3>
 <p>Một số  configurations:</p>
@@ -1468,22 +1468,22 @@ job.commit()
 </li>
 <li>
 <p>Sau khi CDC data được tạo, đảm bảo rằng <strong>cdctask</strong> trong DMS cập nhập bản ghi như bên dưới:
-<img src="/WorkShopTwo/images/4.s3/51.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/51.png"></p>
 </li>
 <li>
 <p>Chạy Glue job glue-hudi-job để upsert the CDC changestới HUDI table ticket_purchase_hist. Sau khi Glue job chạy thành công. Bạn có thể truy cập <a href="https://console.aws.amazon.com/athena"> Amazon Athena Console </a> để xác minh việc tăng số lượng bản ghi.
-<img src="/WorkShopTwo/images/4.s3/52.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/52.png"></p>
 </li>
 </ol>
 <h3 id="step-5--chạy-incremental-queries-sử-dụng-spark-sql">Step 5 – Chạy Incremental Queries sử dụng Spark SQL</h3>
 <ol>
 <li>Truy cập AWS Glue Console, click <strong>Job</strong></li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/53.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/53.png"></p>
 <ol start="2">
 <li>
 <p>Chọn gluehudijob. Nhấn <strong>Clone job</strong> ở <strong>Action</strong>
-<img src="/WorkShopTwo/images/4.s3/54.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/54.png"></p>
 </li>
 <li>
 <p>Copy đoạn code sau.</p>
@@ -1593,7 +1593,7 @@ job.commit()
 <li>Đợi status chuyển Succeeded</li>
 <li>Truy cập Amazon Athena console và truy vấn table ticket_purchase_hist_incremental</li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/55.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/55.png"></p>
 <h3 id="tổng-kết">Tổng kết</h3>
 <p>Chúng ta đã thực hiện được:</p>
 <ol>
@@ -2113,19 +2113,19 @@ job.commit()
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
-    <script src="/js/jquery.sticky.js?1715586281"></script>
-    <script src="/js/featherlight.min.js?1715586281"></script>
-    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script src="/js/clipboard.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733820671"></script>
+    <script src="/js/jquery.sticky.js?1733820671"></script>
+    <script src="/js/featherlight.min.js?1733820671"></script>
+    <script src="/js/highlight.pack.js?1733820671"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
-    <script src="/js/learn.js?1715586281"></script>
-    <script src="/js/hugo-learn.js?1715586281"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733820671"></script>
+    <script src="/js/learn.js?1733820671"></script>
+    <script src="/js/hugo-learn.js?1733820671"></script>
 
-    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <link href="/mermaid/mermaid.css?1733820671" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733820671"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

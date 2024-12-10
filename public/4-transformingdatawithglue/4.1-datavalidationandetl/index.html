@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Data Validation and ETL :: Getting Hands On with Amazon GuardDuty</title>
 
     
-    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
-    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
-    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
-    <link href="/css/theme.css?1715586281" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    <link href="/css/nucleus.css?1733820671" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733820671" rel="stylesheet">
+    <link href="/css/hybrid.css?1733820671" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733820671" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733820671" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733820671" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733820671" rel="stylesheet">
+    <link href="/css/theme.css?1733820671" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733820671" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733820671" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733820671"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733820671"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733820671"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1715586281"></script>
+<script type="text/javascript" src="/js/search.js?1733820671"></script>
 
     
   </div>
@@ -965,7 +965,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>23-04-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1070,11 +1070,11 @@
 <ol>
 <li>Truy cập <a href="https://console.aws.amazon.com/glue/home"> AWS Glue Console </a></li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/1.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/1.png"></p>
 <ol start="2">
 <li>
 <p>Tại  AWS Glue menu, chọn <strong>Crawlers</strong>
-<img src="/WorkShopTwo/images/4.s3/2.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/2.png"></p>
 </li>
 <li>
 <p>Chọn <strong>Create crawler</strong>.</p>
@@ -1084,27 +1084,27 @@
 </li>
 <li>
 <p>Có thể nhập hoặc không description và nhấn next.
-<img src="/WorkShopTwo/images/4.s3/3.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/3.png"></p>
 </li>
 <li>
 <p>Chọn <strong>Not yet</strong> và <strong>Add a data source</strong></p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/4.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/4.png"></p>
 <ol start="7">
 <li>
 <p>Chọn S3 làm data source, <strong>S3 Path</strong> là path chứa CSV files từ bài lab DMS, tất cả các tham số còn lại để default và nhấn <strong>Add an S3 data source</strong></p>
 </li>
 <li>
 <p>Chọn Next
-<img src="/WorkShopTwo/images/4.s3/5.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/5.png"></p>
 </li>
 <li>
 <p>Chọn <strong>Iam Role</strong></p>
 </li>
 <li>
 <p>Chọn Next
-<img src="/WorkShopTwo/images/4.s3/6.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/6.png"></p>
 </li>
 <li>
 <p>Chọn Add database</p>
@@ -1113,40 +1113,40 @@
 <p>Nhập ticketdata là tên database và nhấn <strong>Create database</strong></p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/7.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/7.png"></p>
 <ol start="13">
 <li>Chọn <strong>Target database</strong> là ticketdata vừa tạo và nhấn next</li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/9.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/9.png"></p>
 <ol start="14">
 <li>
 <p>Review và nhấn <strong>Create crawler</strong>.
-<img src="/WorkShopTwo/images/4.s3/10png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/10png"></p>
 </li>
 <li>
 <p>Thực hiện Crawler bằng cách nhấn <strong>Run crawler</strong>
-<img src="/WorkShopTwo/images/4.s3/11.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/11.png"></p>
 </li>
 <li>
 <p>Tại AWS Glue chọn <strong>Databases -&gt; Tables</strong></p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/13.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/13.png"></p>
 <h3 id="part-b-xác-thực-dữ-liệu">PART B: Xác thực dữ liệu</h3>
 <ol>
 <li>Chọn <strong>ticketdata</strong> database, <strong>person</strong> tables
 Tại table này sẽ có một số cột không thể xác định tên. Chúng ta sẽ khắc phục nó.</li>
 <li>Chọn <strong>Edit Schema</strong></li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/14.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/14.png"></p>
 <ol start="3">
 <li>Chọn <strong>colr0</strong> và nhấn Edit
-<img src="/WorkShopTwo/images/4.s3/15.png" alt="DeployCF"></li>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/15.png"></li>
 </ol>
 <p>Nhập id làm column name và nhấn <strong>Save</strong>
-<img src="/WorkShopTwo/images/4.s3/16.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/16.png"></p>
 <p>Lặp lại các bước trên với từng các cột còn lại: full_name, last_name and first_name.
-<img src="/WorkShopTwo/images/4.s3/17.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/17.png"></p>
 <ol start="4">
 <li>Nhấn <strong>Save as new table version</strong>.</li>
 </ol>
@@ -1154,37 +1154,37 @@ Tại table này sẽ có một số cột không thể xác định tên. Chún
 <ol>
 <li>
 <p>Chọn ETL jobs.
-<img src="/WorkShopTwo/images/4.s3/18.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/18.png"></p>
 </li>
 <li>
 <p>Chọn <strong>Visual ETL</strong>
-<img src="/WorkShopTwo/images/4.s3/19.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/19.png"></p>
 </li>
 <li>
 <p>Chọn <strong>Amazon S3</strong> từ Sources list để  thêm <strong>Data source - S3 bucket</strong>
-<img src="/WorkShopTwo/images/4.s3/20.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/20.png"></p>
 </li>
 <li>
 <p>Quan sát data source properties.
-<img src="/WorkShopTwo/images/4.s3/21.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/21.png"></p>
 </li>
 <li>
 <p>Chọn <strong>ticketdata</strong> database, chọn tables <strong>sport_team</strong>
-<img src="/WorkShopTwo/images/4.s3/22.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/22.png"></p>
 </li>
 <li>
 <p>Chọn <strong>Change Schema</strong> để thêm <strong>Transform - Change Schema</strong> node.</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/23.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/23.png"></p>
 <ol start="7">
 <li>Quan sát properties của <strong>Transform - Change Schema</strong>  node. Đổi type của id thành double</li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/24.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/24.png"></p>
 <ol start="8">
 <li>
 <p>Chọn S3 là target.
-<img src="/WorkShopTwo/images/4.s3/25.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/25.png"></p>
 </li>
 <li>
 <p>Chọn <strong>Data target - S3 bucket</strong> để xem thuộc tính. Đổi Format thành <strong>Parquet</strong>. Tại <strong>Compression</strong> Type chọn Uncompressed</p>
@@ -1193,11 +1193,11 @@ Tại table này sẽ có một số cột không thể xác định tên. Chún
 <p>Chọn <strong>S3 Target Location</strong>, nhấn <strong>Browse S3</strong> và chọn <strong>tickets</strong> item trong &ldquo;dmslabs3bucket&rdquo; bucket và nhấn <strong>Choose</strong></p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/26.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/26.png"></p>
 <ol start="11">
 <li>
 <p>Thêm dms_parquet/sport_team/ vào S3 url.
-<img src="/WorkShopTwo/images/4.s3/27.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/27.png"></p>
 </li>
 <li>
 <p>Chọn <strong>Job details</strong> và Nhập tên là Glue-Lab-SportTeamParquet.</p>
@@ -1207,7 +1207,7 @@ Tại table này sẽ có một số cột không thể xác định tên. Chún
 </li>
 <li>
 <p>Tại <strong>Job bookmark</strong>, chọn <strong>Disable</strong>. Chúng ta sẽ thực hành bookmark tại bài lab tiếp theo/
-<img src="/WorkShopTwo/images/4.s3/28.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/28.png"></p>
 </li>
 <li>
 <p>Nhấn <strong>Save</strong> button để tạo job</p>
@@ -1220,13 +1220,13 @@ Tại table này sẽ có một số cột không thể xác định tên. Chún
 </li>
 <li>
 <p>Chọn Monitoring để xem thống kê trạng thái và số lân run.
-<img src="/WorkShopTwo/images/4.s3/29.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/29.png"></p>
 </li>
 <li>
 <p>Chọn Job run để xác định ETL job đã chạy thành công. Mất khoảng tầm 1 phút.</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/30.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/30.png"></p>
 <ol start="20">
 <li>Lặp lại các bước trên cho 4 tables <strong>sport_location, sporting_event, sporting_event_ticket and person</strong> tables</li>
 </ol>
@@ -1234,43 +1234,43 @@ Tại table này sẽ có một số cột không thể xác định tên. Chún
 <ol>
 <li>Tại Glue navigation menu, chọn <strong>Create crawler</strong>.</li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/32.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/32.png"></p>
 <ol start="2">
 <li>
 <p>Nhập glue-lab-parquet-crawler làm Crawler name và nhấn <strong>Next</strong>
-<img src="/WorkShopTwo/images/4.s3/33.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/33.png"></p>
 </li>
 <li>
 <p>Chọn <strong>Not yet</strong> và <strong>Add a data source</strong></p>
 </li>
 <li>
 <p>Chọn S3 làm data source
-<img src="/WorkShopTwo/images/4.s3/35.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/35.png"></p>
 </li>
 <li>
 <p>Chọn <strong>Next</strong></p>
 </li>
 <li>
 <p>Chọn <strong>IAM role</strong>
-<img src="/WorkShopTwo/images/4.s3/36.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/36.png"></p>
 </li>
 <li>
 <p>Chọn ticketdata làm  database
-<img src="/WorkShopTwo/images/4.s3/37.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/37.png"></p>
 </li>
 <li>
 <p>Review lại và nhấn <strong>Create crawler</strong></p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/4.s3/38.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/38.png"></p>
 <ol start="9">
 <li>Chọn <strong>Run Crawler</strong>
-<img src="/WorkShopTwo/images/4.s3/39.png" alt="DeployCF"></li>
+<img alt="DeployCF" src="/WorkShopTwo/images/4.s3/39.png"></li>
 </ol>
 <p><strong>Quan sát tables</strong>
 10. Chọn <strong>Tables</strong>
 11. Chọn filter parquet và quan sát</p>
-<p><img src="/WorkShopTwo/images/4.s3/40.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/4.s3/40.png"></p>
 <p>Chúng ta đã hoàn thành bài lab <strong>Data Validation and ETL</strong></p>
 
 
@@ -1781,19 +1781,19 @@ Tại table này sẽ có một số cột không thể xác định tên. Chún
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
-    <script src="/js/jquery.sticky.js?1715586281"></script>
-    <script src="/js/featherlight.min.js?1715586281"></script>
-    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script src="/js/clipboard.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733820671"></script>
+    <script src="/js/jquery.sticky.js?1733820671"></script>
+    <script src="/js/featherlight.min.js?1733820671"></script>
+    <script src="/js/highlight.pack.js?1733820671"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
-    <script src="/js/learn.js?1715586281"></script>
-    <script src="/js/hugo-learn.js?1715586281"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733820671"></script>
+    <script src="/js/learn.js?1733820671"></script>
+    <script src="/js/hugo-learn.js?1733820671"></script>
 
-    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <link href="/mermaid/mermaid.css?1733820671" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733820671"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

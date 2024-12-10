@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Athena and QuickSight :: Getting Hands On with Amazon GuardDuty</title>
 
     
-    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
-    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
-    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
-    <link href="/css/theme.css?1715586281" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    <link href="/css/nucleus.css?1733820671" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733820671" rel="stylesheet">
+    <link href="/css/hybrid.css?1733820671" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733820671" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733820671" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733820671" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733820671" rel="stylesheet">
+    <link href="/css/theme.css?1733820671" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733820671" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733820671" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733820671"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733820671"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733820671"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1715586281"></script>
+<script type="text/javascript" src="/js/search.js?1733820671"></script>
 
     
   </div>
@@ -965,7 +965,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>23-04-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1091,7 +1091,7 @@
 <li>Sử dụng tag để phân bổ chi phí</li>
 </ul>
 <h3 id="yêu-cầu">Yêu cầu</h3>
-<p>Hoàn thành <a href="../../3-IngestionwithDMS/_index.md">Ingestion with DMS</a> và <a href="../../4-TransformingdatawithGlue/_index.md">Transforming data with Glue ETL</a> labs.</p>
+<p>Hoàn thành <a href="/3-ingestionwithdms/">Ingestion with DMS</a> và <a href="/4-transformingdatawithglue/">Transforming data with Glue ETL</a> labs.</p>
 <h3 id="bắt-đẩu">Bắt đẩu</h3>
 <p>Trong bài lab này, chúng ta sẽ hoàn thành các task sau:</p>
 <ol>
@@ -1103,11 +1103,11 @@
 <ol>
 <li>Truy cập Athena</li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/1.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/1.png"></p>
 <ol start="2">
 <li>
 <p>Chọn database <strong>&ldquo;ticketdata&rdquo;</strong>
-<img src="/WorkShopTwo/images/5.fwd/2.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/2.png"></p>
 </li>
 <li>
 <p>Chọn table <strong>&ldquo;parquet_sporting_event_ticket&rdquo;</strong> để xem các trường</p>
@@ -1133,19 +1133,19 @@ e.home_team_id = h.id
 AND e.away_team_id = a.id
 AND e.location_id = l.id;
 </code></pre><p>Kết quả như sau:</p>
-<p><img src="/WorkShopTwo/images/5.fwd/3.png" alt="Athena">
-<img src="/WorkShopTwo/images/5.fwd/4.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/3.png">
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/4.png"></p>
 <ol start="5">
 <li>
 <p>Chọn <strong>Create</strong> và <strong>View from query</strong></p>
 </li>
 <li>
 <p>Đặt tên view là sporting_event_info vào click <strong>Create</strong>
-<img src="/WorkShopTwo/images/5.fwd/5.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/5.png"></p>
 </li>
 </ol>
 <p>View đã được khởi tạo
-<img src="/WorkShopTwo/images/5.fwd/6.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/6.png"></p>
 <ol start="7">
 <li>Copy đoạn Sql sau sang một tab mới</li>
 </ol>
@@ -1169,19 +1169,19 @@ parquet_person p
 WHERE
 t.sporting_event_id = e.event_id
 AND t.ticketholder_id = p.id
-</code></pre><p><img src="/WorkShopTwo/images/5.fwd/7.png" alt="Athena"></p>
+</code></pre><p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/7.png"></p>
 <ol start="8">
 <li>Lưu lại với tên: create_view_sporting_event_ticket_info
-<img src="/WorkShopTwo/images/5.fwd/8.png" alt="Athena"></li>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/8.png"></li>
 </ol>
 <p>Click <strong>Run</strong></p>
-<p><img src="/WorkShopTwo/images/5.fwd/9.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/9.png"></p>
 <p>Kết quả xuất hiện như sau:
-<img src="/WorkShopTwo/images/5.fwd/10.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/10.png"></p>
 <ol start="9">
 <li>
 <p>Đặt tên view là: sporting_event_ticket_info và click <strong>Create</strong>
-<img src="/WorkShopTwo/images/5.fwd/11.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/11.png"></p>
 </li>
 <li>
 <p>Copy đoạn Sql sau sang một tab mới</p>
@@ -1197,28 +1197,28 @@ FROM sporting_event_ticket_info
 GROUP BY 1
 ORDER BY 1;
 </code></pre><p>Lưu với tên là: analytics_sporting_event_ticket_info
-<img src="/WorkShopTwo/images/5.fwd/12.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/12.png"></p>
 <p>Click Run</p>
-<p><img src="/WorkShopTwo/images/5.fwd/13.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/13.png"></p>
 <h3 id="build-an-amazon-quicksight-dashboard">Build an Amazon QuickSight Dashboard</h3>
 <h4 id="set-up-quicksight">Set up QuickSight</h4>
 <ol>
 <li>
 <p>Truy cập <strong>QuickSight</strong>
-<img src="/WorkShopTwo/images/5.fwd/15.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/15.png"></p>
 </li>
 <li>
 <p><strong>Sign up for QuickSight.</strong></p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/16.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/16.png"></p>
 <ol start="3">
 <li>
 <p>Chọn Enterprise Version</p>
 </li>
 <li>
 <p>Continue
-<img src="/WorkShopTwo/images/5.fwd/17.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/17.png"></p>
 </li>
 <li>
 <p>Chọn No, Maybe Later, Ở màn hình mới để mặc định.</p>
@@ -1230,30 +1230,30 @@ ORDER BY 1;
 <p>Chọn DMS bucket và chọn <strong>Finish</strong></p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/18.png" alt="Athena"></p>
-<p><img src="/WorkShopTwo/images/5.fwd/19.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/18.png"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/19.png"></p>
 <p>Nhấn <strong>Finish</strong></p>
 <ol start="8">
 <li>
 <p>Chọn New analysis
-<img src="/WorkShopTwo/images/5.fwd/20.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/20.png"></p>
 </li>
 <li>
 <p>Chọn <strong>New dataset</strong>
-<img src="/WorkShopTwo/images/5.fwd/21.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/21.png"></p>
 </li>
 <li>
 <p>Tại màn Create a Dataset, chọn Athena</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/22.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/22.png"></p>
 <ol start="11">
 <li>
 <p>Data source name: ticketdata-qs, và chọn <strong>Validate connection</strong></p>
 </li>
 <li>
 <p>Click <strong>Create data source</strong>
-<img src="/WorkShopTwo/images/5.fwd/23.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/23.png"></p>
 </li>
 <li>
 <p>Chọn database <strong>ticketdata</strong></p>
@@ -1262,13 +1262,13 @@ ORDER BY 1;
 <p>Chọn bảng <strong>sporting_event_ticket_info</strong> và nhấn <strong>Select</strong></p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/24.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/24.png"></p>
 <ol start="15">
 <li>Chọn option <strong>Import to SPICE for quicker analytics</strong> và nhấn <strong>Visualize</strong>.</li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/25.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/25.png"></p>
 <p>Chúng ta có thể quan sát thấy QuickSight Visualize interface và bắt đầu xây dựng dashboard</p>
-<p><img src="/WorkShopTwo/images/5.fwd/26.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/26.png"></p>
 <h3 id="tạo-quicksight-charts">Tạo QuickSight Charts</h3>
 <p>Trong phần này chúng ta sẽ cùng tìm hiểu các loại chart</p>
 <ol>
@@ -1277,7 +1277,7 @@ ORDER BY 1;
 </li>
 <li>
 <p>Chọn <strong>expand icon</strong> và chọn <strong>Show as Currency</strong>
-<img src="/WorkShopTwo/images/5.fwd/27.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/27.png"></p>
 </li>
 <li>
 <p>Click <strong>Add button</strong> từ Visuals pane</p>
@@ -1288,11 +1288,11 @@ ORDER BY 1;
 <li>X-axis Fields list chọn <strong>event_date_time</strong></li>
 <li>Y-axis chọn <strong>ticket_price</strong> từ Field list.</li>
 </ul>
-<p><img src="/WorkShopTwo/images/5.fwd/28.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/28.png"></p>
 <ol start="4">
 <li>Bạn có thể kéo và di chuyển các hình ảnh khác để điều chỉnh không gian trong trang tổng quan. Trong danh sách Trường, nhấp và kéo trường Seat_level vào hộp Nhóm/Màu. Bạn cũng có thể sử dụng thanh trượt bên dưới trục x để vừa với tất cả dữ liệu.</li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/29.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/29.png"></p>
 <ol start="5">
 <li>
 <p>Trong Visuals pane, chọn <strong>Vertical bar chart</strong> và <strong>Clustered bar combo chart</strong> icon</p>
@@ -1304,17 +1304,17 @@ ORDER BY 1;
 <p>Tại <strong>Lines</strong> box, chọn <strong>Aggregate: Count Distinct</strong>.</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/30.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/30.png"></p>
 <ol start="8">
 <li>Chọn <strong>insight</strong> icon</li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/31.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/31.png"></p>
 <h3 id="tạo-quicksight-parameters">Tạo QuickSight Parameters</h3>
 <p>Trong phần này chúng ta sẽ tạo parameters cho dashboard và thêm filter.</p>
 <ol>
 <li>Chọn Parameters từ tool bar</li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/32.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/32.png"></p>
 <ol start="2">
 <li>
 <p>Chọn <strong>Add</strong> để tạo parameter</p>
@@ -1333,7 +1333,7 @@ ORDER BY 1;
 </li>
 <li>
 <p>Chọn <strong>Create</strong> và đóng dialog
-<img src="/WorkShopTwo/images/5.fwd/33.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/33.png"></p>
 </li>
 <li>
 <p>Tạo thêm parameter với thông số sau:</p>
@@ -1346,33 +1346,33 @@ ORDER BY 1;
 <li>Hãy chọn giá trị từ lịch làm ngày bắt đầu có sẵn trong biểu đồ của bạn cho event_date_time</li>
 <li>Click <strong>Create</strong></li>
 </ul>
-<p><img src="/WorkShopTwo/images/5.fwd/35.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/35.png"></p>
 <ol start="9">
 <li>Trong màn hình tiếp theo. Click vào 3 chấm của <strong>EventFrom</strong> parameter và chọn <strong>Add control</strong></li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/36.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/36.png"></p>
 <ol start="10">
 <li>
 <p>Nhập name là Event From và nhấn <strong>Add</strong>
-<img src="/WorkShopTwo/images/5.fwd/37.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/37.png"></p>
 </li>
 <li>
 <p>Tương tự với <strong>EventTo</strong>
-<img src="/WorkShopTwo/images/5.fwd/38.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/38.png"></p>
 </li>
 </ol>
 <p>Bây giờ bạn có thể xem và mở rộng phần Kiểm soát phía trên biểu đồ.</p>
-<p><img src="/WorkShopTwo/images/5.fwd/39.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/39.png"></p>
 <h3 id="tạo-quicksight-filter">Tạo QuickSight Filter</h3>
 <ol>
 <li>Chọn <strong>Filter</strong></li>
 <li>Click (+) để thêm filter event_date_time</li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/40.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/40.png"></p>
 <ol start="3">
 <li>
 <p>Chọn edit
-<img src="/WorkShopTwo/images/5.fwd/41.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/41.png"></p>
 </li>
 <li>
 <p>Chọn <strong>All applicable visuals</strong> và <strong>Applied To</strong> dropdown</p>
@@ -1388,7 +1388,7 @@ ORDER BY 1;
 </li>
 <li>
 <p>End date parameter: <strong>EventTo</strong>
-<img src="/WorkShopTwo/images/5.fwd/42.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/42.png"></p>
 </li>
 <li>
 <p>Click <strong>Apply</strong>.</p>
@@ -1398,7 +1398,7 @@ ORDER BY 1;
 <ol>
 <li>
 <p>Chọn <strong>Add Calculated Field</strong>
-<img src="/WorkShopTwo/images/5.fwd/43.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/43.png"></p>
 </li>
 <li>
 <p>Nhập name là: event_day_of_week</p>
@@ -1408,7 +1408,7 @@ ORDER BY 1;
 </li>
 <li>
 <p>Click <strong>Save</strong>
-<img src="/WorkShopTwo/images/5.fwd/44.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/44.png"></p>
 </li>
 <li>
 <p>Thêm một trường được tính toán khác với các thuộc tính sau:</p>
@@ -1421,7 +1421,7 @@ ORDER BY 1;
 <ol start="6">
 <li>Chọn Visualize icon từ the Tool bar và nhấn <strong>Add visual</strong></li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/45.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/45.png"></p>
 <ol start="7">
 <li>
 <p>Field type&quot; scatter plot</p>
@@ -1434,10 +1434,10 @@ ORDER BY 1;
 <li>X-axis: &ldquo;event_hour_of_day&rdquo;</li>
 <li>Y-axis: &ldquo;event_day_of_week&rdquo;</li>
 <li>Size: &ldquo;ticket_price&rdquo;
-<img src="/WorkShopTwo/images/5.fwd/46.png" alt="Athena"></li>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/46.png"></li>
 </ul>
 <p>Pushlish hoặc Share
-<img src="/WorkShopTwo/images/5.fwd/47.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/47.png"></p>
 <p>Dashboard là ảnh chụp nhanh phân tích chỉ đọc mà bạn có thể chia sẻ với những người dùng Amazon QuickSight khác nhằm mục đích báo cáo. Trong Dashboard, những người dùng khác vẫn có thể xem hình ảnh và dữ liệu nhưng điều đó sẽ không sửa đổi tập dữ liệu.</p>
 <p>Bạn có thể chia sẻ phân tích với một hoặc nhiều người dùng khác mà bạn muốn cộng tác để tạo hình ảnh. Phân tích cung cấp các cách sử dụng khác để ghi và sửa đổi tập dữ liệu.</p>
 <h3 id="cost-allocation-tags">Cost Allocation Tags</h3>
@@ -1450,7 +1450,7 @@ ORDER BY 1;
 <li>Trên tab tags, bấm vào Manage tags, sau đó chỉ định key và value cho tag.</li>
 <li>Khi bạn hoàn tất, hãy nhấp vào <strong>Save Changes</strong>.</li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/82.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/82.png"></p>
 
 
 
@@ -1960,19 +1960,19 @@ ORDER BY 1;
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
-    <script src="/js/jquery.sticky.js?1715586281"></script>
-    <script src="/js/featherlight.min.js?1715586281"></script>
-    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script src="/js/clipboard.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733820671"></script>
+    <script src="/js/jquery.sticky.js?1733820671"></script>
+    <script src="/js/featherlight.min.js?1733820671"></script>
+    <script src="/js/highlight.pack.js?1733820671"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
-    <script src="/js/learn.js?1715586281"></script>
-    <script src="/js/hugo-learn.js?1715586281"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733820671"></script>
+    <script src="/js/learn.js?1733820671"></script>
+    <script src="/js/hugo-learn.js?1733820671"></script>
 
-    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <link href="/mermaid/mermaid.css?1733820671" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733820671"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

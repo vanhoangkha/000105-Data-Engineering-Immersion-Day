@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Lake Formation Lab for Delta Tables :: Getting Hands On with Amazon GuardDuty</title>
 
     
-    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
-    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
-    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
-    <link href="/css/theme.css?1715586281" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    <link href="/css/nucleus.css?1733820671" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733820671" rel="stylesheet">
+    <link href="/css/hybrid.css?1733820671" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733820671" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733820671" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733820671" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733820671" rel="stylesheet">
+    <link href="/css/theme.css?1733820671" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733820671" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733820671" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733820671"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733820671"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733820671"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1715586281"></script>
+<script type="text/javascript" src="/js/search.js?1733820671"></script>
 
     
   </div>
@@ -965,7 +965,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>23-04-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1070,7 +1070,7 @@
 
 	<h3 id="yêu-cầu">Yêu cầu.</h3>
 <ul>
-<li>Tải dữ liệu vào S3 bằng các hoàn thành Lab <a href="../../3-IngestionwithDMS/3.1-DMS-Migration-Lab/_index.md">MainLab</a></li>
+<li>Tải dữ liệu vào S3 bằng các hoàn thành Lab <a href="/3-ingestionwithdms/3.1-dms-migration-lab/">MainLab</a></li>
 </ul>
 <h3 id="các-bước-thực-hiện">Các bước thực hiện.</h3>
 <ul>
@@ -1081,8 +1081,8 @@
 <h3 id="tạo-glue-job-để-load-dữ-liệu-vào-delta-table">Tạo Glue Job để load dữ liệu vào delta table</h3>
 <ol>
 <li>Tạo glue job và past đoạn code sau đây vào.
-<img src="/WorkShopTwo/images/6.clean/46.png" alt="Clean">
-<img src="/WorkShopTwo/images/6.clean/47.png" alt="Clean"></li>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/46.png">
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/47.png"></li>
 </ol>
 <pre tabindex="0"><code>import sys
 from awsglue.transforms import *
@@ -1179,7 +1179,7 @@ job.commit()
 <ol start="4">
 <li>Nhấn Save, Run và đợi đến khi trạng thái run là Succeeded</li>
 </ol>
-<p><img src="/WorkShopTwo/images/6.clean/48.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/48.png"></p>
 <h3 id="glue-crawler-to-register-delta-table-with-glue-catalog">Glue Crawler to register delta table with Glue Catalog</h3>
 <ol>
 <li>
@@ -1196,30 +1196,30 @@ job.commit()
 </li>
 <li>
 <p>Chọn Data Source,   Include delta lake table paths và Create Symlink tables
-<img src="/WorkShopTwo/images/6.clean/49.png" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/49.png"></p>
 </li>
 <li>
 <p>Chọn IAM và Chọn Database đích
-<img src="/WorkShopTwo/images/6.clean/50.png" alt="Clean">
-<img src="/WorkShopTwo/images/6.clean/51.png" alt="Clean">
-<img src="/WorkShopTwo/images/6.clean/52.png" alt="Clean">
-<img src="/WorkShopTwo/images/6.clean/53.png" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/50.png">
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/51.png">
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/52.png">
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/53.png"></p>
 </li>
 <li>
 <p>Tạo và Nhấn <strong>Run crawler</strong> để chạy job
-<img src="/WorkShopTwo/images/6.clean/54.png" alt="Clean">
-<img src="/WorkShopTwo/images/6.clean/55.png" alt="Clean">
-<img src="/WorkShopTwo/images/6.clean/56.png" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/54.png">
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/55.png">
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/56.png"></p>
 </li>
 </ol>
 <h3 id="truy-vấn-delta-table-sử-dụng-athena">Truy vấn Delta table sử dụng Athena</h3>
 <ol>
 <li>Truy cập Amazon Athena Console và chọn ticketdata_delta database</li>
 <li>Click Preview table để xem kết quả như sau:
-<img src="/WorkShopTwo/images/6.clean/57.png" alt="Clean"></li>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/57.png"></li>
 </ol>
 <h3 id="phân-quyền-truy-vấn">Phân quyền truy vấn</h3>
-<p>Phần này tương tự như lab: Bước 3 <a href="../6.3-LakeFormationLabforApacheIcebergTables/_index.md">Lake Formation Lab for Apache Hudi Tables</a></p>
+<p>Phần này tương tự như lab: Bước 3 <a href="/6-labdatalakeautomation/6.3-lakeformationlabforapacheicebergtables/">Lake Formation Lab for Apache Hudi Tables</a></p>
 
 
 
@@ -1732,19 +1732,19 @@ job.commit()
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
-    <script src="/js/jquery.sticky.js?1715586281"></script>
-    <script src="/js/featherlight.min.js?1715586281"></script>
-    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script src="/js/clipboard.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733820671"></script>
+    <script src="/js/jquery.sticky.js?1733820671"></script>
+    <script src="/js/featherlight.min.js?1733820671"></script>
+    <script src="/js/highlight.pack.js?1733820671"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
-    <script src="/js/learn.js?1715586281"></script>
-    <script src="/js/hugo-learn.js?1715586281"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733820671"></script>
+    <script src="/js/learn.js?1733820671"></script>
+    <script src="/js/hugo-learn.js?1733820671"></script>
 
-    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <link href="/mermaid/mermaid.css?1733820671" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733820671"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

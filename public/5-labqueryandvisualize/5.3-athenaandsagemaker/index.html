@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Athena and SageMaker :: Getting Hands On with Amazon GuardDuty</title>
 
     
-    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
-    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
-    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
-    <link href="/css/theme.css?1715586281" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    <link href="/css/nucleus.css?1733820671" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733820671" rel="stylesheet">
+    <link href="/css/hybrid.css?1733820671" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733820671" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733820671" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733820671" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733820671" rel="stylesheet">
+    <link href="/css/theme.css?1733820671" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733820671" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733820671" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733820671"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733820671"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733820671"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1715586281"></script>
+<script type="text/javascript" src="/js/search.js?1733820671"></script>
 
     
   </div>
@@ -965,7 +965,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>23-04-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1073,12 +1073,12 @@
 <li>Cách sử dụng Jupyter notebooks trong SageMaker để tích hợp với data lake bằng Athena</li>
 <li>Tạo data frames để thao tác với dữ liệu</li>
 </ul>
-<p><img src="/WorkShopTwo/images/5.fwd/96.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/96.png"></p>
 <h3 id="tạo-amazon-sagemaker-notebook-instance">Tạo Amazon SageMaker Notebook Instance</h3>
 <ol>
 <li>
 <p>Truy cập <a href="https://console.aws.amazon.com/sagemaker/home">Amazon Sagemaker</a>, Tại <strong>Notebook instances</strong> chọn <strong>Create notebook instance</strong>
-<img src="/WorkShopTwo/images/5.fwd/97.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/97.png"></p>
 </li>
 <li>
 <p>Nhập các thông tin sau:</p>
@@ -1089,34 +1089,34 @@
 <li>Type: ml.t3.medium</li>
 <li>Elastic Inference: none.</li>
 <li>IAM role: Tạo IAM role Any S3 bucket, gán thêm <strong>AmazonAthenaFullAccess</strong>
-<img src="/WorkShopTwo/images/5.fwd/98.png" alt="Athena"></li>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/98.png"></li>
 </ul>
-<p><img src="/WorkShopTwo/images/5.fwd/99.png" alt="Athena"></p>
-<p><img src="/WorkShopTwo/images/5.fwd/100.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/99.png"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/100.png"></p>
 <p>Chọn <strong>Create notebook instance</strong>
-<img src="/WorkShopTwo/images/5.fwd/101.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/101.png"></p>
 <ol start="3">
 <li>
 <p>Đợi Trạng thái của note book thành <strong>InService</strong>. Chọn <strong>Open Jupyter</strong>
-<img src="/WorkShopTwo/images/5.fwd/02021.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/02021.png"></p>
 </li>
 <li>
 <p>Mở notebook interface
-<img src="/WorkShopTwo/images/5.fwd/102.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/102.png"></p>
 </li>
 </ol>
 <h3 id="kết-nối-sagemaker-jupyter-notebook-tới-athena">Kết nối SageMaker Jupyter notebook tới Athena</h3>
 <ol>
 <li>
 <p>Tại Jupyter notebook tab, Chọn <strong>New</strong> và chọn <strong>conda_python3</strong>
-<img src="/WorkShopTwo/images/5.fwd/103.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/103.png"></p>
 </li>
 <li>
 <p>Cài đặt PyAthena</p>
 </li>
 </ol>
 <pre tabindex="0"><code>!pip install PyAthena[SQLAlchemy]
-</code></pre><p><img src="/WorkShopTwo/images/5.fwd/104.png" alt="Athena"></p>
+</code></pre><p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/104.png"></p>
 <h3 id="làm-việc-với-panda">Làm việc với panda</h3>
 <ol>
 <li>Chạy Command sau đây bằng notebook cell để lấy region hiện tại</li>
@@ -1136,7 +1136,7 @@ df
 </code></pre><ol start="2">
 <li>Chọn Run và quan sát dataframe,</li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/105.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/105.png"></p>
 <ol start="3">
 <li></li>
 </ol>
@@ -1153,13 +1153,13 @@ df
        group by 1,2,3,4,5 \
        order by 1,2,3,4,5  limit 1000;&#39;, engine)
 df
-</code></pre><p><img src="/WorkShopTwo/images/5.fwd/106.png" alt="Athena"></p>
+</code></pre><p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/106.png"></p>
 <ol start="4">
 <li>Vẽ biểu đồ</li>
 </ol>
 <pre tabindex="0"><code>import matplotlib.pyplot as plt 
 df.plot(x=&#39;event_date_time&#39;,y=&#39;avg_ticket_price&#39;)
-</code></pre><p><img src="/WorkShopTwo/images/5.fwd/107.png" alt="Athena"></p>
+</code></pre><p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/107.png"></p>
 
 
 
@@ -1672,19 +1672,19 @@ df.plot(x=&#39;event_date_time&#39;,y=&#39;avg_ticket_price&#39;)
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
-    <script src="/js/jquery.sticky.js?1715586281"></script>
-    <script src="/js/featherlight.min.js?1715586281"></script>
-    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script src="/js/clipboard.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733820671"></script>
+    <script src="/js/jquery.sticky.js?1733820671"></script>
+    <script src="/js/featherlight.min.js?1733820671"></script>
+    <script src="/js/highlight.pack.js?1733820671"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
-    <script src="/js/learn.js?1715586281"></script>
-    <script src="/js/hugo-learn.js?1715586281"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733820671"></script>
+    <script src="/js/learn.js?1733820671"></script>
+    <script src="/js/hugo-learn.js?1733820671"></script>
 
-    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <link href="/mermaid/mermaid.css?1733820671" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733820671"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

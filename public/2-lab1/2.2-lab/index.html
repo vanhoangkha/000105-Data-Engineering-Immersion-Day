@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Lab :: Getting Hands On with Amazon GuardDuty</title>
 
     
-    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
-    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
-    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
-    <link href="/css/theme.css?1715586281" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    <link href="/css/nucleus.css?1733820671" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733820671" rel="stylesheet">
+    <link href="/css/hybrid.css?1733820671" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733820671" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733820671" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733820671" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733820671" rel="stylesheet">
+    <link href="/css/theme.css?1733820671" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733820671" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733820671" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733820671"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733820671"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733820671"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1715586281"></script>
+<script type="text/javascript" src="/js/search.js?1733820671"></script>
 
     
   </div>
@@ -965,7 +965,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>23-04-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1080,7 +1080,7 @@
 <li>Phụ lục: Các tập lệnh</li>
 </ul>
 <p>Trong Kinesis prelab setup, bạn đã hoàn thành các điều kiện tiên quyết cho bài lab này. Trong bài lab, bạn sẽ tạo quy trình Amazon Managed Service cho Apache Flink.</p>
-<p><img src="/WorkShopTwo/images/2.prerequisite/WS5.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS5.png"></p>
 <h3 id="set-up-amazon-analytics-studio-application-thông-qua-cloudformation-stack-deployment">Set up Amazon Analytics Studio Application thông qua CloudFormation stack deployment</h3>
 <ol>
 <li>
@@ -1099,7 +1099,7 @@
 <p>Điền các tham số , chọn IAM và check vào box &ldquo;I acknowledge that AWS CloudFormation might create IAM resources.&rdquo;</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/2.prerequisite/WS9.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS9.png"></p>
 <ol start="3">
 <li>Stack Sex taoj ra 6 Amazon Kinesis Data Streams trong Amazon Kinesis Console</li>
 </ol>
@@ -1123,42 +1123,42 @@
 <p>anomalydetectionstream – ghi lại các bản ghi có điểm bất thường lớn hơn 2</p>
 </li>
 </ul>
-<p><img src="/WorkShopTwo/images/2.prerequisite/WS10.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS10.png"></p>
 <ol start="4">
 <li>CloudFormation Stack cũng sẽ tạo một ứng dụng Amazon Analytics Studio có tên là kda-flink-prelab-RealtimeApplicationNotebook trong tab Amazon Kinesis Application Console. Chúng ta sẽ viết Studio Notebook tương tác trong Apache Zeppelin để phân tích dữ liệu theo thời gian thực.</li>
 </ol>
-<p><img src="/WorkShopTwo/images/2.prerequisite/WS11.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS11.png"></p>
 <ol start="5">
 <li>Chạy Ứng dụng Studio bằng cách chọn kda-flink-prelab-RealtimeApplicationNotebook trong tab Studio. Chọn “Run” lần nữa trên màn hình tiếp theo.
-<img src="/WorkShopTwo/images/2.prerequisite/WS12.png" alt="DeployCF"></li>
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS12.png"></li>
 </ol>
 <h3 id="tạo-lưu-lượng-truy-cập-trang-web-theo-thời-gian-thực-bằng-amazon-kinesis-data-generator-kdg">Tạo lưu lượng truy cập trang web theo thời gian thực bằng Amazon Kinesis Data Generator (KDG)</h3>
 <ol>
 <li>
 <p>Mở output  Amazon CloudFormation console click vào link Amazon Kinesis Data Generator
-<img src="/WorkShopTwo/images/2.prerequisite/WS13.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS13.png"></p>
 </li>
 <li>
 <p>Bắt đầu gửi traffic</p>
 </li>
 </ol>
 <pre tabindex="0"><code>{&#34;browseraction&#34;:&#34;Impression&#34;, &#34;site&#34;: &#34;https://www.mysite.com&#34;}
-</code></pre><p><img src="/WorkShopTwo/images/2.prerequisite/WS14.png" alt="DeployCF"></p>
+</code></pre><p><img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS14.png"></p>
 <pre tabindex="0"><code>  {&#34;browseraction&#34;:&#34;Click&#34;, &#34;site&#34;: &#34;https://www.mysite.com&#34;}
-</code></pre><p><img src="/WorkShopTwo/images/2.prerequisite/WS15.png" alt="DeployCF"></p>
+</code></pre><p><img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS15.png"></p>
 <p>Bạn có thể xem số lượng được gửi đến data stream</p>
-<p><img src="/WorkShopTwo/images/2.prerequisite/WS16a.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS16a.png"></p>
 <p>Sau 30 giây thì dừng</p>
 <h3 id="thực-hiện-phân-tích-dữ-liệu-thời-gian-thực">Thực hiện phân tích dữ liệu thời gian thực</h3>
 <ol>
 <li>
 <p>Mở   Amazon Kinesis Application Console, chọn kda-prelab-template-RealtimeApplicationNotebook. Chọn “Open in Apache Zeppelin”.
-<img src="/WorkShopTwo/images/2.prerequisite/WS16.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS16.png"></p>
 </li>
 <li>
 <p>Tại Apache Zeppelin Console, chọn Create new note. Tên notebook là kda_Interactive_notebook
-<img src="/WorkShopTwo/images/2.prerequisite/WS18.png" alt="DeployCF">
-<img src="/WorkShopTwo/images/2.prerequisite/WS19.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS18.png">
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS19.png"></p>
 </li>
 <li>
 <p>Thực hiện phân tích tương tác theo thời gian thực với luồng dữ liệu Kinesis.</p>
@@ -1181,64 +1181,64 @@
 <p>Notebook cũng có <a href="https://aws-bigdata-blog.s3.amazonaws.com/DE-ID-KDA-Lab/kda_realtime_inetractive_streaming_notebook_2J9H888TM.zpln">tại đây</a>. Bạn có thể tải về và imported thông qua Apache Zeppelin console.</p>
 </li>
 </ul>
-<p><img src="/WorkShopTwo/images/2.prerequisite/WS19aa.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS19aa.png"></p>
 <ul>
 <li>
 <p>Sau đó, bạn có thể mở notebook và chạy từng đoạn một.
-<img src="/WorkShopTwo/images/2.prerequisite/WS19bb.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS19bb.png"></p>
 </li>
 <li>
 <p>Sơ đồ luồng
-<img src="/WorkShopTwo/images/2.prerequisite/WS19c.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS19c.png"></p>
 </li>
 </ul>
 <h3 id="chạy-apache-zeppelin">Chạy Apache Zeppelin</h3>
 <ol>
 <li>Chạy các scripts tạo bảng</li>
 </ol>
-<p><img src="/WorkShopTwo/images/2.prerequisite/WS20.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS20.png"></p>
 <ol start="2">
 <li>User Defined Function (UDF) thực hiện Phát hiện bất thường trong thời gian thực bằng thuật toán Random Cut Forest algorithm</li>
 </ol>
-<p><img src="/WorkShopTwo/images/2.prerequisite/WS22.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS22.png"></p>
 <ol start="3">
 <li>
 <p>Bạn có thể xem dữ liệu thời gian thực từ các lượt truy cập trang web bằng cách chạy truy vấn ở Bước #3
-<img src="/WorkShopTwo/images/2.prerequisite/WS23.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS23.png"></p>
 </li>
 <li>
 <p>Tạo impressionstream bằng cách lọc messages từ tickerstream</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/2.prerequisite/WS24.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS24.png"></p>
 <ol start="5">
 <li>Tạo clickstream bằng cách lọc messages từ tickerstream</li>
 </ol>
-<p><img src="/WorkShopTwo/images/2.prerequisite/WS25.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS25.png"></p>
 <ol start="6">
 <li>
 <p>Tính toán Tỷ lệ nhấp (CTR) và điền vào ctrstream.
-<img src="/WorkShopTwo/images/2.prerequisite/WS26.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS26.png"></p>
 </li>
 <li>
 <p>Bạn có thể xem Tỷ lệ nhấp trong thời gian thực bằng cách thực hiện Bước 7.
-<img src="/WorkShopTwo/images/2.prerequisite/WS27.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS27.png"></p>
 </li>
 <li>
 <p>Sử dụng UDF (RRandom Cut Forest) để tạo điểm bất thường.
-<img src="/WorkShopTwo/images/2.prerequisite/WS28.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS28.png"></p>
 </li>
 <li>
 <p>Populate anomalydetectionstream bằng cách thực hiện step 9
-<img src="/WorkShopTwo/images/2.prerequisite/WS29.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS29.png"></p>
 </li>
 <li>
 <p>Bây giờ hãy kiểm tra điểm bất thường từ thuật toán Random Cut Forest trong thời gian thực:
-<img src="/WorkShopTwo/images/2.prerequisite/WS30.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS30.png"></p>
 </li>
 <li>
 <p>Bạn sẽ bắt đầu nhận được thông báo trong email của mình khi phát hiện thấy sự bất thường:
-<img src="/WorkShopTwo/images/2.prerequisite/WS31.png" alt="DeployCF"></p>
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS31.png"></p>
 </li>
 <li>
 <p>Nếu bạn không nhận được email thông báo bất thường trong lần thử đầu tiên</p>
@@ -1269,8 +1269,8 @@
 <ol>
 <li>Xong khi hoàn thành bài lab. Delete kda-flink-pre-lab</li>
 </ol>
-<p><img src="/WorkShopTwo/images/2.prerequisite/WS32.png" alt="DeployCF">
-<img src="/WorkShopTwo/images/2.prerequisite/WS33.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS32.png">
+<img alt="DeployCF" src="/WorkShopTwo/images/2.prerequisite/WS33.png"></p>
 
 
 
@@ -1783,19 +1783,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
-    <script src="/js/jquery.sticky.js?1715586281"></script>
-    <script src="/js/featherlight.min.js?1715586281"></script>
-    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script src="/js/clipboard.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733820671"></script>
+    <script src="/js/jquery.sticky.js?1733820671"></script>
+    <script src="/js/featherlight.min.js?1733820671"></script>
+    <script src="/js/highlight.pack.js?1733820671"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
-    <script src="/js/learn.js?1715586281"></script>
-    <script src="/js/hugo-learn.js?1715586281"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733820671"></script>
+    <script src="/js/learn.js?1733820671"></script>
+    <script src="/js/hugo-learn.js?1733820671"></script>
 
-    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <link href="/mermaid/mermaid.css?1733820671" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733820671"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

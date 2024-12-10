@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Option 3: Skip DMS Lab :: Getting Hands On with Amazon GuardDuty</title>
 
     
-    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
-    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
-    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
-    <link href="/css/theme.css?1715586281" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    <link href="/css/nucleus.css?1733820671" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733820671" rel="stylesheet">
+    <link href="/css/hybrid.css?1733820671" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733820671" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733820671" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733820671" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733820671" rel="stylesheet">
+    <link href="/css/theme.css?1733820671" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733820671" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733820671" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733820671"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733820671"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733820671"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1715586281"></script>
+<script type="text/javascript" src="/js/search.js?1733820671"></script>
 
     
   </div>
@@ -965,7 +965,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>23-04-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1076,7 +1076,7 @@
 <li>Kiểm chứng data</li>
 </ol>
 <h3 id="kiến-trúc">Kiến trúc.</h3>
-<p><img src="/WorkShopTwo/images/3.connect/81.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/81.png"></p>
 <p>Cơ sở dữ liệu RDS Postgres được sử dụng làm nguồn bán vé cho các sự kiện thể thao. Nó lưu trữ thông tin giao dịch về giá bán vé cho những người được chọn và chuyển quyền sở hữu vé với các bảng bổ sung để biết chi tiết sự kiện. AWS Database Migration Service (DMS) được sử dụng để tải toàn bộ dữ liệu từ nguồn Amazon RDS sang bộ chứa Amazon S3.</p>
 <p>Trước khi Glue lab bắt đầu, ta có thể chọn bỏ qua quá trình DMS data migration. Nếu vậy, hãy sao chép trực tiếp dữ liệu nguồn vào bộ chứa S3 của ta.</p>
 <p>Trong bài lab hôm nay, ta sẽ sao chép dữ liệu từ bộ chứa S3 tập trung vào tài khoản AWS của mình, thu thập dữ liệu bằng trình thu thập thông tin AWS Glue để tạo siêu dữ liệu, chuyển đổi dữ liệu bằng AWS Glue, truy vấn dữ liệu và tạo Chế độ xem bằng Athena và cuối cùng là xây dựng dashboard với Amazon QuickSight.</p>
@@ -1085,16 +1085,16 @@
 <h3 id="copy-data-từ-staging-amazon-s3-bucket-đến-s3-bucket-của-chúng-ta">Copy data từ staging Amazon S3 bucket đến S3 bucket của chúng ta.</h3>
 <pre tabindex="0"><code>aws s3 cp --recursive --copy-props none s3://aws-dataengineering-day.workshop.aws/data/ s3://&lt;YourBucketName&gt;/tickets/
 </code></pre><h3 id="data-sau-đây-sẽ-được-copy-đến-s3-bucket-của-chúng-ta">Data sau đây sẽ được copy đến s3 bucket của chúng ta:</h3>
-<p><img src="/WorkShopTwo/images/3.connect/82.jpeg" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/82.jpeg"></p>
 <h3 id="xác-minh-dữ-liệu">Xác minh dữ liệu</h3>
 <ol>
 <li>Mở S3 console và xem dữ liệu được copy từ CloudShell
-<img src="/WorkShopTwo/images/3.connect/822.png" alt="DeployCF"></li>
+<img alt="DeployCF" src="/WorkShopTwo/images/3.connect/822.png"></li>
 <li>Sử dụng S3 select để truy vấn s3 data</li>
 </ol>
-<p><img src="/WorkShopTwo/images/3.connect/83.png" alt="DeployCF"></p>
-<p><img src="/WorkShopTwo/images/3.connect/84.png" alt="DeployCF"></p>
-<p><img src="/WorkShopTwo/images/3.connect/85.png" alt="DeployCF"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/83.png"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/84.png"></p>
+<p><img alt="DeployCF" src="/WorkShopTwo/images/3.connect/85.png"></p>
 <h3 id="next-step">Next Step.</h3>
 <p>Tiếp theo, Chúng ta sẽ sử  hoàn thành bài lab với AWS Glue</p>
 <ul>
@@ -1612,19 +1612,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
-    <script src="/js/jquery.sticky.js?1715586281"></script>
-    <script src="/js/featherlight.min.js?1715586281"></script>
-    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script src="/js/clipboard.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733820671"></script>
+    <script src="/js/jquery.sticky.js?1733820671"></script>
+    <script src="/js/featherlight.min.js?1733820671"></script>
+    <script src="/js/highlight.pack.js?1733820671"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
-    <script src="/js/learn.js?1715586281"></script>
-    <script src="/js/hugo-learn.js?1715586281"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733820671"></script>
+    <script src="/js/learn.js?1733820671"></script>
+    <script src="/js/hugo-learn.js?1733820671"></script>
 
-    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <link href="/mermaid/mermaid.css?1733820671" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733820671"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

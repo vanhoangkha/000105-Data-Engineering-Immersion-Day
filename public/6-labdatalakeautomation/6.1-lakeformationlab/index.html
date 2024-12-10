@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Lake Formation Lab :: Getting Hands On with Amazon GuardDuty</title>
 
     
-    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
-    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
-    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
-    <link href="/css/theme.css?1715586281" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    <link href="/css/nucleus.css?1733820671" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733820671" rel="stylesheet">
+    <link href="/css/hybrid.css?1733820671" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733820671" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733820671" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733820671" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733820671" rel="stylesheet">
+    <link href="/css/theme.css?1733820671" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733820671" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733820671" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733820671"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733820671"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733820671"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1715586281"></script>
+<script type="text/javascript" src="/js/search.js?1733820671"></script>
 
     
   </div>
@@ -965,7 +965,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>23-04-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1076,7 +1076,7 @@
 <li>Truy cập <a href="https://console.aws.amazon.com/glue/home">AWS Glue console</a>.</li>
 <li>Chọn <strong>Connections</strong></li>
 </ol>
-<p><img src="/WorkShopTwo/images/6.clean/2.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/2.png"></p>
 <ol start="3">
 <li>Chọn <strong>Create connection</strong>.</li>
 <li>Nhập tên là glue-rds-connection</li>
@@ -1084,50 +1084,50 @@
 <li>Nhập miêu tả</li>
 <li>Chọn JDBC URL</li>
 </ol>
-<p><img src="/WorkShopTwo/images/6.clean/3.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/3.png"></p>
 <ol start="8">
 <li>Nhập username và password của RDS</li>
 <li>Mở rộng <strong>Network options - optinoal</strong></li>
 <li>Chọn Subnet private</li>
 <li>Chọn <strong>security group</strong> là <strong>sgdefault</strong>
-<img src="/WorkShopTwo/images/6.clean/4.png" alt="Clean"></li>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/4.png"></li>
 <li>Chọn <strong>Create Connection</strong> để hoàn thành <strong>glue-rds-connection</strong> setup</li>
 </ol>
-<p><img src="/WorkShopTwo/images/6.clean/5.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/5.png"></p>
 <h3 id="thêm-administrator-và-start-workflows-sử-dụng-blueprints">Thêm Administrator và start workflows sử dụng Blueprints</h3>
 <p>Truy cập <a href="https://console.aws.amazon.com/lakeformation/home">AWS Lake Formation</a>:
-<img src="/WorkShopTwo/images/6.clean/6.png" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/6.png"></p>
 <ol>
 <li>
 <p>Nếu là lần đầu đăng nhập vào Lake Formation. Đầu tiên chúng ta cần thêm administrators.</p>
 </li>
 <li>
 <p>Mở <strong>Welcome to Lake Formation pop-up</strong>. Chọn <strong>Add myself</strong> checkbox và nhấn <strong>Get started</strong>
-<img src="/WorkShopTwo/images/6.clean/77.png" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/77.png"></p>
 </li>
 <li>
 <p>Click chọn <strong>Databases</strong>. Chọn <strong>ticketdata</strong> và nhấn <strong>Actions</strong> -&gt; <strong>Grant</strong>.
-<img src="/WorkShopTwo/images/6.clean/8.png" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/8.png"></p>
 </li>
 <li>
 <p>Trao quyền <strong>super</strong> cho cả 2 <strong>Database permissions</strong> and <strong>Grantable permissions</strong>.
-<img src="/WorkShopTwo/images/6.clean/9.png" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/9.png"></p>
 </li>
 <li>
 <p>Chọn Edit database <strong>ticketdata</strong></p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/6.clean/10.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/10.png"></p>
 <ol start="6">
 <li>
 <p>Uncheck <strong>Use only IAM access control</strong> và nhấn <strong>Save</strong>
-<img src="/WorkShopTwo/images/6.clean/1111.jpeg" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/1111.jpeg"></p>
 </li>
 <li>
 <p>Chọn <strong>Blueprints</strong> và nhấn <strong>Use blueprint</strong></p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/6.clean/11.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/11.png"></p>
 <ul>
 <li>
 <p><strong>Blueprint Type</strong>, Chọn <strong>Database snapshot</strong></p>
@@ -1137,7 +1137,7 @@
 <ul>
 <li>Database Connection Chọn glue-rds-connection</li>
 <li>Source Data Path: sportstickets/dms_sample/mlb_data
-<img src="/WorkShopTwo/images/6.clean/12.png" alt="Clean"></li>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/12.png"></li>
 </ul>
 </li>
 <li>
@@ -1150,17 +1150,17 @@
 </ul>
 </li>
 </ul>
-<p><img src="/WorkShopTwo/images/6.clean/1313.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/1313.png"></p>
 <ul>
 <li>Các mục còn lại nhập như sau:</li>
 </ul>
-<p><img src="/WorkShopTwo/images/6.clean/144.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/144.png"></p>
 <ol start="8">
 <li>Các options còn lại để mặc định. Nhấn <strong>Create</strong></li>
 <li>Khi blueprint được tạo thành công. Nhấn <strong>Action → Start.</strong>.
-<img src="/WorkShopTwo/images/6.clean/14.png" alt="Clean"></li>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/14.png"></li>
 <li>Bạn sẽ thấy trạng thái thay đổi như sau: <strong>Running → Discovering → Importing → Completed</strong>
-<img src="/WorkShopTwo/images/6.clean/15.png" alt="Clean"></li>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/15.png"></li>
 </ol>
 <h2 id="xem-các-thành-phần-bên-dưới-của-một-blueprint">Xem các thành phần bên dưới của một BLueprint</h2>
 <p>Lake Formation blueprin sẽ tạo Glue Workflow điều phối các công việc của Glue ETL (cả python shell và pyspark), Glue crawlers và triggers. Sẽ mất tầm 20-30 phút để thực thi lần đầu tiên. Chúng ta hãy cùng xem các thành phần mà nó tạo ra:</p>
@@ -1170,28 +1170,28 @@
 </li>
 <li>
 <p>Tại  Workflow section, chọn tên Workflow. CLick vào Run Id.
-<img src="/WorkShopTwo/images/6.clean/16.png" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/16.png"></p>
 </li>
 <li>
 <p>Tại đây bạn có thể thấy Workflow Run details
-<img src="/WorkShopTwo/images/6.clean/17.png" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/17.png"></p>
 </li>
 <li>
 <p>Để xem các jobs được tạo. Nhấn <strong>AWS Glue</strong> và Chọn <strong>ETL Jobs.</strong>
-<img src="/WorkShopTwo/images/6.clean/18.png" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/18.png"></p>
 </li>
 <li>
 <p>Xem lịch sử và các thông số liên quan.
-<img src="/WorkShopTwo/images/6.clean/19.png" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/19.png"></p>
 </li>
 </ol>
 <h3 id="xem-kết-quả-sử-dụng-athena">Xem kết quả sử dụng Athena</h3>
 <ol>
 <li>Chọn Database <strong>ticketdata</strong> tại Lake Formation console và nhấn view Tables.</li>
 <li>Chọn tables lakeformation__sportstickets_dms_sample_mlb_data, <strong>Action → View Data</strong>
-<img src="/WorkShopTwo/images/6.clean/20.png" alt="Clean"></li>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/20.png"></li>
 <li>Tại Athena console. chạy query:
-<img src="/WorkShopTwo/images/6.clean/21.png" alt="Clean"></li>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/21.png"></li>
 </ol>
 <pre tabindex="0"><code>SELECT * FROM &#34;ticketdata&#34;.&#34;lakeformation__sportstickets_dms_sample_mlb_data&#34; limit 10;
 </code></pre><pre tabindex="0"><code>SELECT count(*) as recordcount FROM &#34;ticketdata&#34;.&#34;lakeformation__sportstickets_dms_sample_mlb_data&#34;;
@@ -1199,11 +1199,11 @@
 <ol>
 <li>
 <p>Thêm IAM User
-<img src="/WorkShopTwo/images/6.clean/22.png" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/22.png"></p>
 </li>
 <li>
 <p>Tạo user với tên là: <strong>datalake_user</strong>
-<img src="/WorkShopTwo/images/6.clean/23.png" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/23.png"></p>
 </li>
 <li>
 <p>Gán cho User policy <strong>AthenaFullAccess</strong></p>
@@ -1215,7 +1215,7 @@
 <p>Chọn User <strong>datalake_user</strong> vừa tạo, Nhấn add inline policy:</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/6.clean/24.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/24.png"></p>
 <p>Sử dụng đoạn json sau đây.</p>
 <pre tabindex="0"><code>{
     &#34;Version&#34;: &#34;2012-10-17&#34;,
@@ -1268,7 +1268,7 @@
 <ol>
 <li>Đăng nhập bằng user datalake_user</li>
 </ol>
-<p><img src="/WorkShopTwo/images/6.clean/25.jpeg" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/25.jpeg"></p>
 <ol start="2">
 <li>Truy cập athena, chọn <strong>ticketdata</strong> database và chạy query sau:</li>
 </ol>
@@ -1276,7 +1276,7 @@
 </code></pre><ol start="3">
 <li>Kết quả chỉ hiển thị những column được gán quyền như bên trên: mlb_name, mlb_team_long, mlb_team and mlb_pos</li>
 </ol>
-<p><img src="/WorkShopTwo/images/6.clean/27.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/27.png"></p>
 
 
 
@@ -1786,19 +1786,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
-    <script src="/js/jquery.sticky.js?1715586281"></script>
-    <script src="/js/featherlight.min.js?1715586281"></script>
-    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script src="/js/clipboard.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733820671"></script>
+    <script src="/js/jquery.sticky.js?1733820671"></script>
+    <script src="/js/featherlight.min.js?1733820671"></script>
+    <script src="/js/highlight.pack.js?1733820671"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
-    <script src="/js/learn.js?1715586281"></script>
-    <script src="/js/hugo-learn.js?1715586281"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733820671"></script>
+    <script src="/js/learn.js?1733820671"></script>
+    <script src="/js/hugo-learn.js?1733820671"></script>
 
-    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <link href="/mermaid/mermaid.css?1733820671" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733820671"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

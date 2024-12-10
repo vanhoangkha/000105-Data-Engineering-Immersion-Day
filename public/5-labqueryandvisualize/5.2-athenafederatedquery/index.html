@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Athena Federated query :: Getting Hands On with Amazon GuardDuty</title>
 
     
-    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
-    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
-    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
-    <link href="/css/theme.css?1715586281" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    <link href="/css/nucleus.css?1733820671" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733820671" rel="stylesheet">
+    <link href="/css/hybrid.css?1733820671" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733820671" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733820671" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733820671" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733820671" rel="stylesheet">
+    <link href="/css/theme.css?1733820671" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733820671" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733820671" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733820671"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733820671"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733820671"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1715586281"></script>
+<script type="text/javascript" src="/js/search.js?1733820671"></script>
 
     
   </div>
@@ -965,7 +965,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>23-04-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1066,29 +1066,29 @@
 
 	<p><a href="https://docs.aws.amazon.com/athena/latest/ug/connect-to-a-data-source.html">Federated query</a> là một tính năng mới của Amazon Athena cho phép các nhà phân tích dữ liệu, kỹ sư và nhà khoa học dữ liệu thực hiện các truy vấn SQL trên dữ liệu được lưu trữ trong các nguồn dữ liệu quan hệ, không quan hệ, đối tượng và tùy chỉnh. Với Athena federated query, khách hàng có thể gửi một truy vấn SQL duy nhất và phân tích dữ liệu từ nhiều nguồn chạy tại chỗ hoặc được lưu trữ trên đám mây. Athena thực hiện federated queries bằng Data Source Connectors chạy trên <a href="http://aws.amazon.com/lambda">AWS Lambda</a>.</p>
 <p>Trong bài này, chúng ta sẽ khám phá cách truy vấn các nguồn dữ liệu khác nhau từ Athena. Chúng tôi sẽ sử dụng cơ sở dữ liệu RDS hiện có được tạo như một phần của thiết lập ban đầu dưới dạng datasource-1 và data lake data (được lưu trữ trong S3) dưới dạng datasource-2.</p>
-<p><img src="/WorkShopTwo/images/5.fwd/83.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/83.png"></p>
 <h3 id="yêu-cầu">Yêu cầu</h3>
-<p>Hoàn thành <a href="../../3-IngestionwithDMS/_index.md">Ingestion with DMS</a> và <a href="../../4-TransformingdatawithGlue/_index.md">Transforming data with Glue ETL</a> labs.</p>
+<p>Hoàn thành <a href="/3-ingestionwithdms/">Ingestion with DMS</a> và <a href="/4-transformingdatawithglue/">Transforming data with Glue ETL</a> labs.</p>
 <h3 id="step">Step</h3>
 <ol>
 <li>Tạo S3 endpoint để cho phép S3 truy cập vào Athena connector for Lambda, hãy làm theo các bước được đề cập <a href="https://docs.aws.amazon.com/glue/latest/dg/vpc-endpoints-s3.html">ở đây</a> để tạo S3 endpoint. Đảm bảo sử dụng cùng subnet sẽ được sử dụng cho hàm Lambda trong bước tiếp theo.</li>
 <li>Tại Athena console, chọn <strong>&ldquo;Data sources&rdquo;</strong>, <strong>Create data source</strong> button</li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/84.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/84.png"></p>
 <ol start="3">
 <li>
 <p>Chọn <strong>PostgreSQL</strong> làm data source, và nhấn <strong>Next</strong>
-<img src="/WorkShopTwo/images/5.fwd/85.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/85.png"></p>
 </li>
 <li>
 <p>Nhập <strong>Data source name</strong>: Postgres_DB</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/86.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/86.png"></p>
 <ol start="5">
 <li>Tại Connection detail, Chọn <strong>‘Create Lambda function’</strong></li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/87.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/87.png"></p>
 <ol start="6">
 <li>Điền các thông tin như sau
 <table>
@@ -1147,29 +1147,29 @@
 </table>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/88.png" alt="Athena">
-<img src="/WorkShopTwo/images/5.fwd/89.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/88.png">
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/89.png"></p>
 <ol start="8">
 <li>Đợi function deploy, Chọn function ở ô <strong>Select or enter a Lambda function</strong>. Nhấn <strong>Next</strong></li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/90.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/90.png"></p>
 <p>Nhấn <strong>Create data source</strong></p>
 <ol start="9">
 <li>Cấu hình biến môi trường cho Lamda function.
 Thêm một biến môi trường có tên là: Postgres_DB_connection_string và copy dữ liệu của biến <strong>default</strong></li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/91.png" alt="Athena"></p>
-<p><img src="/WorkShopTwo/images/5.fwd/92.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/91.png"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/92.png"></p>
 <ol start="10">
 <li>
 <p>Xác thực data source đã được tạo ở Athena Console.
-<img src="/WorkShopTwo/images/5.fwd/93.png" alt="Athena"></p>
+<img alt="Athena" src="/WorkShopTwo/images/5.fwd/93.png"></p>
 </li>
 <li>
 <p>Truy cập <a href="https://console.aws.amazon.com/athena/home#/query-editor">query editor</a> chọn new datasource</p>
 </li>
 </ol>
-<p><img src="/WorkShopTwo/images/5.fwd/94.png" alt="Athena"></p>
+<p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/94.png"></p>
 <ol start="12">
 <li>Truy vấn kết hợp sử dụng, <strong>“sport_location”</strong> tables của Postgres data source và <strong>“parquet_sporting_event”</strong> table từ data lake</li>
 </ol>
@@ -1180,7 +1180,7 @@ JOIN &#34;AwsDataCatalog&#34;.&#34;ticketdata&#34;.&#34;parquet_sporting_event&#
 ON loc.id = evt.location_id
 GROUP BY loc.city
 ORDER BY loc.city ASC;
-</code></pre><p><img src="/WorkShopTwo/images/5.fwd/95.png" alt="Athena"></p>
+</code></pre><p><img alt="Athena" src="/WorkShopTwo/images/5.fwd/95.png"></p>
 
 
 
@@ -1693,19 +1693,19 @@ ORDER BY loc.city ASC;
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
-    <script src="/js/jquery.sticky.js?1715586281"></script>
-    <script src="/js/featherlight.min.js?1715586281"></script>
-    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script src="/js/clipboard.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733820671"></script>
+    <script src="/js/jquery.sticky.js?1733820671"></script>
+    <script src="/js/featherlight.min.js?1733820671"></script>
+    <script src="/js/highlight.pack.js?1733820671"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
-    <script src="/js/learn.js?1715586281"></script>
-    <script src="/js/hugo-learn.js?1715586281"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733820671"></script>
+    <script src="/js/learn.js?1733820671"></script>
+    <script src="/js/hugo-learn.js?1733820671"></script>
 
-    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <link href="/mermaid/mermaid.css?1733820671" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733820671"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

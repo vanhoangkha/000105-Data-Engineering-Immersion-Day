@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.122.0">
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Lake Formation Lab for Apache Hudi Tables :: Getting Hands On with Amazon GuardDuty</title>
 
     
-    <link href="/css/nucleus.css?1715586281" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1715586281" rel="stylesheet">
-    <link href="/css/hybrid.css?1715586281" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1715586281" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1715586281" rel="stylesheet">
-    <link href="/css/auto-complete.css?1715586281" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1715586281" rel="stylesheet">
-    <link href="/css/theme.css?1715586281" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1715586281" rel="stylesheet">
+    <link href="/css/nucleus.css?1733820671" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733820671" rel="stylesheet">
+    <link href="/css/hybrid.css?1733820671" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733820671" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733820671" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733820671" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733820671" rel="stylesheet">
+    <link href="/css/theme.css?1733820671" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733820671" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1715586281" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733820671" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1715586281"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733820671"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1715586281"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1715586281"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733820671"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733820671"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1715586281"></script>
+<script type="text/javascript" src="/js/search.js?1733820671"></script>
 
     
   </div>
@@ -965,7 +965,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>23-04-2024</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1069,9 +1069,9 @@
 	<h2 id="bước-1-tạo-glue-job-và-hudi-tables">Bước 1: Tạo Glue job và HUDI tables</h2>
 <ol>
 <li>Tại Glue console. Tạo glue job với: ** Spark script editor**, <strong>Create a new script with boilerplate code</strong>. Và nhấn <strong>Create</strong>
-<img src="/WorkShopTwo/images/6.clean/28.png" alt="Clean"></li>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/28.png"></li>
 </ol>
-<p><img src="/WorkShopTwo/images/6.clean/29.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/29.png"></p>
 <ol start="2">
 <li>Gán đoạn code sau vào Glue script editor</li>
 </ol>
@@ -1338,11 +1338,11 @@ job.commit()
 <ol start="5">
 <li>Lưu lại và click Run, đợi đến khi trạng thái Run là Succeeded</li>
 </ol>
-<p><img src="/WorkShopTwo/images/6.clean/31.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/31.png"></p>
 <h3 id="bước-2-truy-vấn-hudi-table-bằng-athena">Bước 2: Truy vấn HUDI table bằng Athena</h3>
 <ol>
 <li>Truy cập Athena, Chọn hudi_sample database và chạy thử truy vấn như sau:
-<img src="/WorkShopTwo/images/6.clean/32.png" alt="Clean"></li>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/32.png"></li>
 </ol>
 <h3 id="bước-3-phân-quyền-truy-cập-trong-lake-formation">Bước 3: Phân quyền truy cập trong Lake Formation</h3>
 <ol>
@@ -1498,25 +1498,25 @@ job.commit()
 </ol>
 <ul>
 <li>Với user: lf-developer (Table-based Permissions)
-<img src="/WorkShopTwo/images/6.clean/33.png" alt="Clean">
-<img src="/WorkShopTwo/images/6.clean/34.png" alt="Clean"></li>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/33.png">
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/34.png"></li>
 <li>Với user: business_analyst (Column-based Permissions)
-<img src="/WorkShopTwo/images/6.clean/35.png" alt="Clean"></li>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/35.png"></li>
 </ul>
-<p><img src="/WorkShopTwo/images/6.clean/36.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/36.png"></p>
 <ul>
 <li>Với user: business_analyst (Cell level access
 )
-<img src="/WorkShopTwo/images/6.clean/35.png" alt="Clean"></li>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/35.png"></li>
 </ul>
-<p><img src="/WorkShopTwo/images/6.clean/36.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/36.png"></p>
 <ul>
 <li>Với campaign_manager:
 <ul>
 <li>
 <p>Tạo Data filters:
-<img src="/WorkShopTwo/images/6.clean/37.png" alt="Clean">
-<img src="/WorkShopTwo/images/6.clean/38.png" alt="Clean"></p>
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/37.png">
+<img alt="Clean" src="/WorkShopTwo/images/6.clean/38.png"></p>
 </li>
 <li>
 <p>Data permissions cho user: campaign_manager</p>
@@ -1524,7 +1524,7 @@ job.commit()
 </ul>
 </li>
 </ul>
-<p><img src="/WorkShopTwo/images/6.clean/39.png" alt="Clean"></p>
+<p><img alt="Clean" src="/WorkShopTwo/images/6.clean/39.png"></p>
 <ol start="3">
 <li>Login vào từng user sử dụng Athena truy vấn để xác minh các quyền.</li>
 </ol>
@@ -2047,19 +2047,19 @@ job.commit()
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.min.js?1715586281"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1715586281"></script>
-    <script src="/js/jquery.sticky.js?1715586281"></script>
-    <script src="/js/featherlight.min.js?1715586281"></script>
-    <script src="/js/highlight.pack.js?1715586281"></script>
+    <script src="/js/clipboard.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733820671"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733820671"></script>
+    <script src="/js/jquery.sticky.js?1733820671"></script>
+    <script src="/js/featherlight.min.js?1733820671"></script>
+    <script src="/js/highlight.pack.js?1733820671"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1715586281"></script>
-    <script src="/js/learn.js?1715586281"></script>
-    <script src="/js/hugo-learn.js?1715586281"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733820671"></script>
+    <script src="/js/learn.js?1733820671"></script>
+    <script src="/js/hugo-learn.js?1733820671"></script>
 
-    <link href="/mermaid/mermaid.css?1715586281" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1715586281"></script>
+    <link href="/mermaid/mermaid.css?1733820671" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733820671"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
