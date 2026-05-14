@@ -1,6 +1,6 @@
 ---
 title : "Phát hiện luồng click chuột bất thường bằng Amazon Managed Service for Apache Flink"
-date : "`r Sys.Date()`"
+date: 2024-01-01
 weight : 1
 chapter : false
 pre : " <b> 2.1 </b> "
